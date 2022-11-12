@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="images/store_16.png" type="image/x-icon" sizes="16x16">
+  <link rel="shortcut icon" href="images/store_32.png" type="image/x-icon" sizes="24x24 32x32">
+  <link rel="shortcut icon" href="images/store_48.png" type="image/x-icon" sizes="40x40 48x48">
+  <link rel="shortcut icon" href="images/store_64.png" type="image/x-icon" sizes="56x56 64x64">
+  <link rel="shortcut icon" href="images/store_128.png" type="image/x-icon" sizes="84x84 98x98 100x100 112x112 126x126 128x128">
+  <link rel="shortcut icon" href="images/store_256.png" type="image/x-icon" sizes="256x256">
+  <link rel="shortcut icon" href="images/store.svg" type="image/x-icon" sizes="284x284 512x512">
+  <title data-l10n-id="title">Orchid | Web Store</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="var(--background, #e7e7e7)">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Orchid" />
+  <meta property="og:title" content="Web Store" />
+  <meta property="og:description" content="Explore to find your favorite webapps and games." />
+  <meta property="og:url" content="https://orchidfoss.github.io/webstore/" />
+  <meta property="og:image" content="images/thumbnail.svg" />
+  <meta name="title" content="Orchid Web Store" />
+  <meta name="description" content="Explore to find your favorite webapps and games." />
+  <meta name="keywords" content="MortCodesWeb, Orchid Web Store, OS, Gonk, Gecko, Web, WOS, Aluminum, AluminumOS, Vulpes, VulpOS, Mort, MORTADA_KILLER0, MORTADA KILLER0, Store" />
+  <meta property="twitter:card" content="website">
+  <meta property="twitter:site" content="@orchid_webstore" />
+  <meta property="twitter:title" content="Orchid Web Store" />
+  <meta property="twitter:description" content="Explore to find your favorite webapps and games." />
+  <meta property="twitter:url" content="https://orchidfoss.github.io/webstore/" />
+  <meta property="twitter:image" content="images/thumbnail.svg" />
+  <link rel="stylesheet" href="lib/gaia-icons/gaia-icons.css">
+  <link rel="stylesheet" href="lib/gaia-icons/bidi-helper.css">
+  <link rel="stylesheet" href="css/splashscreen.css">
+  <link rel="stylesheet" href="css/webstore.css">
+  <link rel="stylesheet" href="css/warning.css">
+  <link rel="stylesheet" href="css/slideshow.css">
+  <link rel="stylesheet" href="css/filters.css">
+  <link rel="stylesheet" href="css/webapps.css">
+  <link rel="stylesheet" href="css/webapp_info.css">
+  <link rel="stylesheet" href="css/comments.css">
+  <link rel="stylesheet" href="lib/orchid_ui/header.css">
+  <link rel="stylesheet" href="css/settings.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/switches.css">
+  <link rel="stylesheet" href="css/seekbars.css">
+  <script defer src="services/script.js" type="module"></script>
+  <script defer src="js/main.js"></script>
+  <script defer src="js/languages.js"></script>
+  <script defer src="js/dark_mode.js"></script>
+  <script defer src="js/comments.js"></script>
+  <script defer src="js/views.js"></script>
+  <script defer src="js/views/content.js"></script>
+  <script defer src="js/views/installed.js"></script>
+  <script defer src="js/views/settings.js"></script>
+  <script defer src="js/file_data.js"></script>
+  <script defer src="js/slideshow.js"></script>
+
+  <!-- Localization -->
+  <script src="js/l10n.js"></script>
+  <meta name="defaultLanguage" content="en-US">
+  <meta name="availableLanguages" content="af, ar, da, de, el, en-US, es, fi, fr, ga, he, hi, hu, id, ja, ko, ku, lv, nl, no, pt, zh">
+  <link rel="localization" href="locales/main.{locale}.properties">
+</head>
+<body>
+  <div id="splashscreen">
+    <div class="progress"></div>
+  </div>
+
+  <div id="offline-message">
+    <div class="container">
+      <h1 data-l10n-id="offline-title"></h1>
+      <p data-l10n-id="offline-detail"></p>
+      <menu>
+        <button class="settings-button" data-l10n-id="open-settings"></button>
+        <button class="reload-button recommend" data-l10n-id="reload"></button>
+      </menu>
+    </div>
+  </div>
+
+  <header class="oui--header" id="header">
+    <a href="#" id="back-button" data-icon="back"></a>
+    <a href="#" id="toggle-sidebar-button" data-icon="menu"></a>
+    <a href="#" class="logo"></a>
+    <form action="" id="searchbox">
+      <div class="search">
+        <input type="text" data-l10n-id="type-here-to-search">
+        <button type="reset" data-icon="close"></button>
+      </div>
+      <ul class="results">
+        <li>List Item 1</li>
+        <li>List Item 2</li>
+        <li>List Item 3</li>
+        <li>List Item 4</li>
+        <li>List Item 5</li>
+      </ul>
+    </form>
+    <h1></h1>
+    <a href="#" data-icon="help"></a>
+    <a href="#" id="profile-button">
+      <img src="" alt="" id="profile-avatar">
+    </a>
+    <a href="#" id="options-button" data-icon="options"></a>
+  </header>
+
+  <nav id="sidebar">
+    <a href="/?page=submit/webapp" id="upload-button" data-icon="add" data-l10n-id="nav-upload"></a>
+    <ul>
+      <li><a href="#" data-icon="apps" data-l10n-id="nav-allWebapps" id="sidebar-allapps" aria-selected="true"></a></li>
+    </ul>
+
+    <header data-l10n-id="nav-categories"></header>
+    <ul id="categories">
+    </ul>
+
+    <header data-l10n-id="nav-personal"></header>
+    <ul>
+      <li><a href="#" data-icon="download" id="sidebar-installed-apps">
+        <span data-l10n-id="nav-installed"></span>
+        <em>41</em>
+      </a></li>
+      <li><a href="#" data-icon="settings" data-l10n-id="nav-settings" id="sidebar-settings"></a></li>
+    </ul>
+  </nav>
+
+  <main id="content" class="content">
+    <div class="warning">
+      <div class="message">
+        <img src="images/store.svg" alt="">
+        <div data-l10n-id="use-store-app"></div>
+      </div>
+      <a href="app://webstore.gaiamobile.org/index.html" target="_blank" data-l10n-id="open-store"></a>
+    </div>
+
+    <div class="slideshow-container" id="slideshow">
+      <div class="holder"></div>
+
+      <div class="controls">
+        <button class="back" data-icon="back"></button>
+        <button class="forward" data-icon="forward"></button>
+      </div>
+      <div class="dots"></div>
+    </div>
+
+    <!-- <div class="filters">
+      <label for="">
+        <span>Database</span>
+        <select name="" id="">
+          <option value="">Option 1</option>
+          <option value="">Option 2</option>
+          <option value="">Option 3</option>
+        </select>
+      </label>
+      <label for="">
+        <span>Platform</span>
+        <select name="" id="">
+          <option value="">Option 1</option>
+          <option value="">Option 2</option>
+          <option value="">Option 3</option>
+        </select>
+      </label>
+    </div> -->
+
+    <div id="webapps"></div>
+  </main>
+
+  <main id="installed-apps" class="content"></main>
+
+  <main id="settings" class="content">
+    <h1 data-l10n-id="settings"></h1>
+    <div class="gaia-list active">
+      <ul id="profile">
+        <li>
+          <img src="" alt="" id="settings-profile-avatar">
+          <div class="vbox">
+            <p id="settings-profile-username"></p>
+            <p id="settings-profile-email"></p>
+          </div>
+        </li>
+      </ul>
+      <header data-l10n-id="settings-general"></header>
+      <ul>
+        <li>
+          <label class="pack-switch reverse">
+            <input type="checkbox" id="settings-dark-mode">
+            <span data-l10n-id="settings-darkMode"></span>
+          </label>
+        </li>
+        <li>
+          <label class="pack-checkbox reverse">
+            <input type="checkbox" id="settings-auto-update">
+            <span data-l10n-id="settings-autoUpdate"></span>
+          </label>
+        </li>
+      </ul>
+      <header data-l10n-id="settings-orchid"></header>
+      <ul>
+        <li>
+          <label class="pack-switch reverse">
+            <input type="checkbox" id="settings-limit-apps">
+            <span data-l10n-id="settings-limitApps"></span>
+          </label>
+        </li>
+      </ul>
+    </div>
+    <div class="copyright" data-l10n-id="copyright"></div>
+    <div class="copyright" data-l10n-id="copyright-notice"></div>
+  </main>
+
+  <main class="content loading-screen" id="loading-screen">
+    <svg viewBox="0 0 16 16" width="29" height="29" xmlns="http://www.w3.org/2000/svg">
+      <style>
+        path {
+          animation: spinner 1.5s ease-in-out infinite;
+          stroke-dasharray: 1,200;
+          stroke-dashoffset: 0;
+          fill: none;
+          stroke-width: 2;
+          stroke-miterlimit: 10;
+          stroke-linecap: round;
+          transform-origin: 50% 50%;
+          stroke: var(--accent-color);
+        }
+
+        @keyframes spinner {
+          0% {
+            stroke-dasharray: 0,200;
+            stroke-dashoffset: 0;
+            transform: rotate(0deg);
+          }
+          100% {
+            stroke-dasharray: 130,200;
+            stroke-dashoffset: -43;
+            transform: rotate(-360deg);
+          }
+        }
+      </style>
+      <path d="M8 1A1 1 0 008 15 1 1 0 008 1"></path>
+    </svg>
+  </main>
+
+  <div id="webapp">
+    <div class="banner-container">
+      <iframe src="" frameborder="0" id="webapp-banner"></iframe>
+    </div>
+
+    <div class="container" id="webapp-card">
+      <header class="app-header">
+        <div class="app-header-info">
+          <img src="" alt="" id="webapp-icon">
+          <div class="context">
+            <div id="webapp-name"></div>
+            <div id="webapp-author"></div>
+            <div class="ratings">
+              <div id="webapp-star-ratings"></div>
+              <div id="webapp-average-rating"></div>
+            </div>
+            <div id="webapp-categories"></div>
+          </div>
+        </div>
+        <div class="app-header-actions">
+          <p id="webapp-pricing"></p>
+          <div class="options">
+            <button id="webapp-install-button" data-l10n-id="webapp-install" class="recommend"></button>
+            <button id="webapp-uninstall-button" data-l10n-id="webapp-uninstall"></button>
+            <button id="webapp-update-button" data-l10n-id="webapp-update"></button>
+          </div>
+          <div id="webapp-age-rating">
+            <img src="" alt="">
+            <div></div>
+          </div>
+        </div>
+      </header>
+
+      <div class="section">
+        <div id="webapp-screenshots-holder">
+          <header data-l10n-id="webapp-screenshots"></header>
+          <div id="webapp-screenshots"></div>
+        </div>
+
+        <header data-l10n-id="webapp-description"></header>
+        <ul>
+          <li id="webapp-description"></li>
+        </ul>
+
+        <header data-l10n-id="webapp-info"></header>
+        <ul>
+          <li id="webapp-size" data-l10n-id="webapp-size"></li>
+          <li id="webapp-downloads" data-l10n-id="webapp-downloads"></li>
+          <li id="webapp-has-ads" data-l10n-id="webapp-hasAds"></li>
+          <li id="webapp-has-tracking" data-l10n-id="webapp-hasTracking"></li>
+        </ul>
+
+        <header data-l10n-id="webapp-tags"></header>
+        <ul>
+          <li id="webapp-tags"></li>
+        </ul>
+
+        <header data-l10n-id="webapp-comments" id="webapp-comments-header"></header>
+        <div class="comments-wrapper" id="webapp-comments">
+          <label for="" class="star-rating">
+            <span data-l10n-id="webapp-starRating"></span>
+            <input type="number" min="1" max="5" value="5">
+          </label>
+          <form action="">
+            <textarea data-l10n-id="webapp-commentInput"></textarea>
+            <button type="reset" data-icon="close"></button>
+            <button type="submit" data-icon="send"></button>
+          </form>
+          <ul></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
