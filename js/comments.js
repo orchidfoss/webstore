@@ -16,13 +16,25 @@ function Comments(path, element, hasStars = false) {
   var inputbox = element.querySelector('form textarea');
   var comments = element.querySelector('ul');
   var starRatingInput = element.querySelector('.star-rating input');
+  var expandButton = element.querySelector('.expand-button');
 
   if (!OrchidServices.isUserLoggedIn()) {
     form.style.display = 'none';
     if (starRatingInput) {
-      starRatingInput.preventDefault.style.display = 'none';
+      starRatingInput.parentElement.style.display = 'none';
     }
   }
+
+  expandButton.onclick = (evt) => {
+    evt.preventDefault();
+    comments.classList.toggle('expanded');
+    expandButton.classList.toggle('active');
+    if (comments.classList.contains("expanded")) {
+      expandButton.dataset.l10nId = "show-less";
+    } else {
+      expandButton.dataset.l10nId = "show-more";
+    }
+  };
 
   function refreshComments() {
     OrchidServices.getWithUpdate(path, (data) => {

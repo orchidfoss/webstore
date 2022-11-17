@@ -45,40 +45,40 @@ label.pack-radio input ~ span:after {
 }
 
 label.pack-checkbox input ~ span:after {
-  background: url(switches/images/check/default.png) no-repeat center top / 2.2rem auto;
+  background: url(switches/images/check/default.svg) no-repeat center top / 2.2rem auto;
   border-radius: 0.5rem;
   background-color: var(--background-theta, #e0e2e5);
 }
 
 label.pack-checkbox:hover input ~ span:after {
-  background-image: url(switches/images/check/default_hover.png);
+  background-image: url(switches/images/check/default_hover.svg);
 }
 
 label.pack-radio input ~ span:after {
-  background: url(switches/images/radio/default.png) no-repeat center top / 2.2rem auto;
+  background: url(switches/images/radio/default.svg) no-repeat center top / 2.2rem auto;
   border-radius: 50%;
   background-color: var(--background-theta, #e0e2e5);
 }
 
 label.pack-radio:hover input ~ span:after {
-  background-image: url(switches/images/radio/default_hover.png);
+  background-image: url(switches/images/radio/default_hover.svg);
 }
 
 /* Light */
 [data-accent-scheme="light"] label.pack-checkbox input ~ span:after {
-  background-image: url(switches/images/check/light/default.png);
+  background-image: url(switches/images/check/light/default.svg);
 }
 
 [data-accent-scheme="light"] label.pack-checkbox:hover input ~ span:after {
-  background-image: url(switches/images/check/light/default_hover.png);
+  background-image: url(switches/images/check/light/default_hover.svg);
 }
 
 [data-accent-scheme="light"] label.pack-radio input ~ span:after {
-  background-image: url(switches/images/radio/light/default.png);
+  background-image: url(switches/images/radio/light/default.svg);
 }
 
 [data-accent-scheme="light"] label.pack-radio:hover input ~ span:after {
-  background-image: url(switches/images/radio/light/default_hover.png);
+  background-image: url(switches/images/radio/light/default_hover.svg);
 }
 
 /* checkbox & radio: disabled state */
@@ -97,19 +97,19 @@ label.pack-switch input:checked ~ span:after {
 /* 'Dangerous' switches */
 
 label.pack-checkbox.danger input ~ span:after {
-  background-image: url(switches/images/check/danger.png);
+  background-image: url(switches/images/check/danger.svg);
 }
 
 label.pack-checkbox.danger:hover input ~ span:after {
-  background-image: url(switches/images/check/danger_hover.png);
+  background-image: url(switches/images/check/danger_hover.svg);
 }
 
 label.pack-radio.danger input ~ span:after {
-  background-image: url(switches/images/radio/danger.png);
+  background-image: url(switches/images/radio/danger.svg);
 }
 
 label.pack-radio.danger:hover input ~ span:after {
-  background-image: url(switches/images/radio/danger_hover.png);
+  background-image: url(switches/images/radio/danger_hover.svg);
 }
 
 label.pack-checkbox.danger input:checked ~ span:after,
@@ -132,7 +132,7 @@ label.pack-switch input ~ span:after {
   pointer-events: none;
   border-radius: 1.45rem;
   overflow: hidden;
-  background: #efeff2 url(switches/images/switch/background_off.png) no-repeat center / 9.2rem 2.7rem;
+  background: #efeff2 url(switches/images/switch/background_off.svg) no-repeat center / 9.2rem 2.7rem;
   transition: background 0.4s cubic-bezier(0.2, 0.9, 0.1, 1);
 }
 html[dir="ltr"] label.pack-switch input ~ span:after {
@@ -141,43 +141,44 @@ html[dir="ltr"] label.pack-switch input ~ span:after {
 }
 html[dir="rtl"] label.pack-switch input ~ span:after {
   left: 0;
+  right: unset;
   background-position: 0;
 }
 
 label.pack-switch:hover input ~ span:after {
-  background-image: url(switches/images/switch/background_off_hover.png);
+  background-image: url(switches/images/switch/background_off_hover.svg);
 }
 
 /* switch: 'ON' state */
 html[dir="ltr"] label.pack-switch input:checked ~ span:after {
-  background-image: url(switches/images/switch/background.png);
+  background-image: url(switches/images/switch/background.svg);
   background-color: var(--accent-color, #0061e0);
   background-position: 0;
 }
 html[dir="rtl"] label.pack-switch input:checked ~ span:after {
-  background-image: url(switches/images/switch/background_rtl.png);
+  background-image: url(switches/images/switch/background_rtl.svg);
   background-position: -3.2rem 0;
 }
 
 html[dir="ltr"] label.pack-switch:hover input:checked ~ span:after {
-  background-image: url(switches/images/switch/background_hover.png);
+  background-image: url(switches/images/switch/background_hover.svg);
 }
 html[dir="rtl"] label.pack-switch:hover input:checked ~ span:after {
-  background-image: url(switches/images/switch/background_rtl_hover.png);
+  background-image: url(switches/images/switch/background_rtl_hover.svg);
 }
 
 html[dir="ltr"][data-accent-scheme="light"] label.pack-switch input:checked ~ span:after {
-  background-image: url(switches/images/switch/light/background.png);
+  background-image: url(switches/images/switch/light/background.svg);
 }
 html[dir="rtl"][data-accent-scheme="light"] label.pack-switch input:checked ~ span:after {
-  background-image: url(switches/images/switch/light/background_rtl.png);
+  background-image: url(switches/images/switch/light/background_rtl.svg);
 }
 
 html[dir="ltr"][data-accent-scheme="light"] label.pack-switch:hover input:checked ~ span:after {
-  background-image: url(switches/images/switch/light/background_hover.png);
+  background-image: url(switches/images/switch/light/background_hover.svg);
 }
 html[dir="rtl"][data-accent-scheme="light"] label.pack-switch:hover input:checked ~ span:after {
-  background-image: url(switches/images/switch/light/background_rtl_hover.png);
+  background-image: url(switches/images/switch/light/background_rtl_hover.svg);
 }
 
 /* switch: disabled state */
@@ -199,19 +200,19 @@ label.pack-switch input:focus-visible ~ span:after {
 /* 'Dangerous' switches */
 
 [data-theme="dark"] label.pack-checkbox.danger input ~ span:after {
-  background-image: url(switches/images/check/dark/danger.png);
+  background-image: url(switches/images/check/dark/danger.svg);
 }
 
 [data-theme="dark"] label.pack-checkbox.danger:hover input ~ span:after {
-  background-image: url(switches/images/check/dark/danger_hover.png);
+  background-image: url(switches/images/check/dark/danger_hover.svg);
 }
 
 [data-theme="dark"] label.pack-radio.danger input ~ span:after {
-  background-image: url(switches/images/radio/dark/danger.png);
+  background-image: url(switches/images/radio/dark/danger.svg);
 }
 
 [data-theme="dark"] label.pack-radio.danger:hover input ~ span:after {
-  background-image: url(switches/images/radio/dark/danger_hover.png);
+  background-image: url(switches/images/radio/dark/danger_hover.svg);
 }
 
 /* ----------------------------------
@@ -219,10 +220,10 @@ label.pack-switch input:focus-visible ~ span:after {
 * ---------------------------------- */
 
 [data-theme="dark"] label.pack-switch input ~ span:after {
-  background-image: url(switches/images/switch/dark/background_off.png);
+  background-image: url(switches/images/switch/dark/background_off.svg);
 }
 
 [data-theme="dark"] label.pack-switch:hover input ~ span:after {
-  background-image: url(switches/images/switch/dark/background_off_hover.png);
+  background-image: url(switches/images/switch/dark/background_off_hover.svg);
 }
 

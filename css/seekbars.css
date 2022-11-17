@@ -81,24 +81,24 @@ input[type=range]::-moz-range-progress {
 input[type="range"]::-moz-range-thumb {
   width: 2.4rem;
   height: 2.4rem;
-  background: var(--accent-color, #0061e0) url(seekbars/images/ui/handler.png);
+  background: var(--accent-color, #0061e0) url(seekbars/images/ui/handler.svg);
   border-radius: 1.5rem;
   border: none;
 }
 
 [role="slider"] button:hover,
 input[type="range"]:hover::-moz-range-thumb {
-  background-image: url(seekbars/images/ui/handler_hover.png);
+  background-image: url(seekbars/images/ui/handler_hover.svg);
 }
 
 [role="slider"] button:active,
 input[type="range"]:active::-moz-range-thumb {
-  background-image: url(seekbars/images/ui/handler_active.png);
+  background-image: url(seekbars/images/ui/handler_active.svg);
 }
 
 [data-accent-scheme="light"] [role="slider"] button,
 [data-accent-scheme="light"] input[type="range"]::-moz-range-thumb {
-  background-image: url(seekbars/images/ui/light/handler.png);
+  background-image: url(seekbars/images/ui/light/handler.svg);
 }
 
 [role="slider"] button {

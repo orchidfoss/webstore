@@ -3,42 +3,42 @@
  * https://bugzilla.mozilla.org/show_bug.cgi?id=1214127 
  */
 
-[data-icon="back"]:-moz-dir(rtl):before {
+html[dir="rtl"] [data-icon="back"]:before {
   transform: rotate(180deg);
 }
 
-[data-icon="forward"]:-moz-dir(rtl):before {
+html[dir="rtl"] [data-icon="forward"]:before {
   transform: rotate(180deg);
 }
 
-[data-icon="back-light"]:-moz-dir(rtl):before {
+html[dir="rtl"] [data-icon="back-light"]:before {
   transform: rotate(180deg);
 }
 
-[data-icon="forward-light"]:-moz-dir(rtl):before {
+html[dir="rtl"] [data-icon="forward-light"]:before {
   transform: rotate(180deg);
 }
 
-[data-icon="arrow-back"]:-moz-dir(rtl):before {
+html[dir="rtl"] [data-icon="arrow-back"]:before {
   transform: rotate(180deg);
 }
 
-[data-icon="arrow-forward"]:-moz-dir(rtl):before {
+html[dir="rtl"] [data-icon="arrow-forward"]:before {
   transform: rotate(180deg);
 }
 
-[data-icon="clear-input"]:-moz-dir(rtl):before {
+html[dir="rtl"] [data-icon="clear-input"]:before {
   transform: rotate(180deg);
 }
 
-[data-icon="expand"]:-moz-dir(rtl):before {
+html[dir="rtl"] [data-icon="expand"]:before {
   transform: rotate(180deg);
 }
 
-[data-icon="send"]:-moz-dir(rtl):before {
+html[dir="rtl"] [data-icon="send"]:before {
   transform: rotate(180deg);
 }
 
-[data-icon="edit"]:-moz-dir(rtl):before {
+html[dir="rtl"] [data-icon="edit"]:before {
   transform: rotate(180deg);
 }

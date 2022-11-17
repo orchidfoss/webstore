@@ -234,6 +234,12 @@ ul.gaia-list,
   right: 0;
 }
 
+html[dir="rtl"] .gaia-list label.pack-checkbox.reverse span:after,
+html[dir="rtl"] .gaia-list label.pack-switch span:after {
+  left: 0;
+  right: unset;
+}
+
 .gaia-list label.pack-checkbox span,
 .gaia-list label.pack-switch span,
 .gaia-list label p {

@@ -287,6 +287,56 @@ html[dir="rtl"] .content {
   display: none;
 }
 
+/* Headers */
+#home-header {
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.1, 1);
+  transform: translateY(0);
+  visibility: visible;
+  opacity: 1;
+  display: flex;
+}
+
+#app-header {
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.1, 1);
+  transform: translateY(32px);
+  visibility: hidden;
+  opacity: 0;
+  display: flex;
+}
+
+#home-header,
+#app-header {
+  flex: 1;
+  width: calc(100% - 14rem);
+  height: 5rem;
+  position: absolute;
+  top: 0;
+}
+html[dir="ltr"] #home-header,
+html[dir="ltr"] #app-header {
+  left: 5rem;
+}
+html[dir="rtl"] #home-header,
+html[dir="rtl"] #app-header {
+  right: 5rem;
+}
+
+.app-header-shown #home-header {
+  transform: translateY(-32px);
+  visibility: hidden;
+  opacity: 0;
+}
+
+.app-header-shown #app-header {
+  transform: translateY(0);
+  visibility: visible;
+  opacity: 1;
+}
+
+#app-header h1 {
+  padding: 0;
+}
+
 @media screen and (max-width: 767px) {
   .oui--header {
     position: fixed;

@@ -133,7 +133,6 @@
     var element = document.createElement("a");
     element.href = "?webapp=" + id;
     element.classList.add("webapp");
-    element.title = data.name;
     element.onclick = (evt) => {
       evt.preventDefault();
       openInfo(data, id, isBananaHackers);
@@ -184,11 +183,45 @@
       category.dataset.l10nId = "category-" + item;
       categories.appendChild(category);
     });
-
     context.appendChild(categories);
+
+    var pricing = document.createElement("span");
+    pricing.classList.add("pricing");
+    if (data.price == 0) {
+      pricing.dataset.l10nId = 'pricing-free';
+      pricing.dataset.l10nArgs = '';
+    } else {
+      pricing.dataset.l10nId = 'pricing-paid';
+      pricing.dataset.l10nArgs = '{"n": "' + data.price + '"}';
+    }
+    context.appendChild(pricing);
+
+    var rating = document.createElement("span");
+    rating.classList.add("rating");
+    rating.dataset.icon = 'bookmarked';
+
+    var sum = 0;
+    for (var i = 0; i < data.comments.length; i++) {
+      sum += parseInt(data.comments[i].rating * 5, 10); //don't forget to add the base
+    }
+    var avg = sum / data.comments.length;
+
+    rating.textContent = EnglishToArabicNumerals(Math.round(avg * 10) / 10),
+    context.appendChild(rating);
+
+    var nav = document.createElement("nav");
+    element.appendChild(nav);
+
+    var installButton = document.createElement("button");
+    installButton.classList.add('install-button');
+    installButton.dataset.l10nId = 'webapp-install';
+    nav.appendChild(installButton);
   }
 
   function openInfo(data, id, isBananaHackers) {
+    var appHeaderIcon = document.getElementById("app-header-icon");
+    var appHeaderName = document.getElementById("app-header-name");
+
     var sidebar = document.getElementById("sidebar");
     var toggleSidebarButton = document.getElementById("toggle-sidebar-button");
     var backButton = document.getElementById("back-button");
@@ -211,6 +244,9 @@
     );
     var webappDescription = document.getElementById("webapp-description");
     var webappInstallSize = document.getElementById("webapp-size");
+    var webappDownloads = document.getElementById("webapp-downloads");
+    var webappHasAds = document.getElementById("webapp-has-ads");
+    var webappHasTracking = document.getElementById("webapp-has-tracking");
     var webappSupportedDevices = document.getElementById(
       "webapp-supported-devices"
     );
@@ -243,10 +279,18 @@
     backButton.style.display = "block";
     content.classList.remove('visible');
     window.history.pushState({ html: "", pageTitle: "" }, "", "?webapp=" + id);
+    document.onscroll = () => {
+      if (webappCard.getBoundingClientRect().top <= 0) {
+        document.body.classList.add('app-header-shown');
+      } else {
+        document.body.classList.remove('app-header-shown');
+      }
+    };
 
     backButton.onclick = () => {
       webappBanner.src = "";
       webappCard.classList.add("fade-out");
+      document.onscroll = null;
 
       // This helps us avoid the page closing next time we open it again.
       setTimeout(() => {
@@ -256,16 +300,19 @@
         toggleSidebarButton.style.display = "block";
         backButton.style.display = "none";
         content.classList.add('visible');
-        window.history.pushState({ html: "", pageTitle: "" }, "", "/webstore/");
+        window.history.pushState({ html: "", pageTitle: "" }, "", "?");
       }, 300);
     };
 
     webappIcon.src = data.icon;
+    appHeaderIcon.style.backgroundImage = 'url(' + data.icon + ')';
     webappIcon.onerror = () => {
+      appHeaderIcon.style.backgroundImage = 'url(images/default.svg)';
       webappIcon.src = "images/default.svg";
     };
 
     webappName.textContent = data.name;
+    appHeaderName.textContent = data.name;
     OrchidServices.getWithUpdate(
       "profile/" + data.author_id,
       function (udata) {
@@ -285,7 +332,7 @@
         }
         var avg = sum / commentsArray.length;
 
-        webappAverageRating.textContent = Math.round(avg * 10) / 10;
+        webappAverageRating.textContent = EnglishToArabicNumerals(Math.round(avg * 10) / 10);
         OrchidServices.set("webstore/" + id, {
           rating_average: Math.round(avg * 10) / 10,
         });
@@ -323,6 +370,16 @@
         a.download = "webapp.orchidpkg.zip";
         a.click();
       }
+
+      OrchidServices.get('webstore/' + id).then((data) => {
+        if (data.downloads) {
+          if (data.downloads.indexOf(OrchidServices.userId()) !== -1) {
+            OrchidServices.set('webstore/' + id, { downloads: [...data.downloads, OrchidServices.userId()] });
+          }
+        } else {
+          OrchidServices.set('webstore/' + id, { downloads: [OrchidServices.userId()] });
+        }
+      });
     };
     uninstallButton.onclick = () => {};
     uninstallButton.style.display = 'none';
@@ -342,13 +399,37 @@
       }
     }
 
+    webappScreenshots.classList.remove('end');
+    webappScreenshots.classList.remove('center');
+    webappScreenshots.classList.add('start');
+    webappScreenshots.onscroll = () => {
+      console.log('scroll left: ' + webappScreenshots.scrollLeft);
+      console.log('scroll width: ' + webappScreenshots.scrollWidth);
+
+      var left = document.dir == 'rtl' ? (webappScreenshots.scrollLeft * -1) : webappScreenshots.scrollLeft;
+
+      if (left <= 1) {
+        webappScreenshots.classList.remove('end');
+        webappScreenshots.classList.remove('center');
+        webappScreenshots.classList.add('start');
+      } else if (left >= ((webappScreenshots.scrollWidth - webappScreenshots.offsetWidth) - 1)) {
+        webappScreenshots.classList.remove('center');
+        webappScreenshots.classList.remove('start');
+        webappScreenshots.classList.add('end');
+      } else {
+        webappScreenshots.classList.remove('end');
+        webappScreenshots.classList.remove('start');
+        webappScreenshots.classList.add('center');
+      }
+    };
+
     webappDescription.innerText = data.description;
     webappTags.textContent = data.tags.join(", ");
 
     Comments("webstore/" + id, webappComments, true);
     OrchidServices.getWithUpdate("webstore/" + id, (data) => {
       webappCommentsHeader.dataset.l10nArgs =
-        '{"n":"' + data.comments.length + '"}';
+        '{"value":"' + data.comments.length + '"}';
     });
 
     if (data.price == 0) {
@@ -362,7 +443,10 @@
     webappAgeRating.children[0].src = 'images/rating/' + data.age_rating + '.svg';
     webappAgeRating.children[1].dataset.l10nId = 'ageRating-' + data.age_rating;
 
-    webappInstallSize.dataset.l10nArgs = '{"n": "' + ((data.download.length / 1024) / 1024).toFixed(2) + 'MB"}';
+    webappInstallSize.dataset.l10nArgs = '{"n": "' + ((data.download.length / 1024) / 1024).toFixed(2) + navigator.mozL10n.get('megabyte') + '"}';
+    webappDownloads.dataset.l10nArgs = '{"n": "' + data.downloads.length + '"}';
+    webappHasAds.dataset.l10nArgs = '{"n": "' + (data.has_ads ? navigator.mozL10n.get('does') : navigator.mozL10n.get('dosent')) + '"}';
+    webappHasTracking.dataset.l10nArgs = '{"n": "' + (data.has_tracking ? navigator.mozL10n.get('does') : navigator.mozL10n.get('dosent')) + '"}';
   }
 
   var paramString = location.search.substring(1);

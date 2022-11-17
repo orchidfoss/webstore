@@ -1,6 +1,17 @@
 (function (exports) {
   "use strict";
 
+  window.EnglishToArabicNumerals = function EnglishToArabicNumerals(numberString) {
+    var arabicNumerals = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+    if (document.dir == 'rtl') {
+      return numberString.toLocaleString(navigator.mozL10n.language.code).replace(/[0-9]/g, function(w) {
+        return arabicNumerals[+w];
+      });
+    } else {
+      return numberString;
+    }
+  }
+
   var offlineMessage = document.getElementById("offline-message");
   var offlineMessageSettingsButton = offlineMessage.querySelector(".settings-button");
   var offlineMessageReloadButton = offlineMessage.querySelector(".reload-button");
@@ -19,7 +30,7 @@
 
   window.addEventListener("load", function () {
     function initializeUser() {
-      if (OrchidServices.isUserLoggedIn) {
+      if (OrchidServices.isUserLoggedIn()) {
         OrchidServices.getWithUpdate(
           "profile/" + OrchidServices.userId(),
           function (data) {

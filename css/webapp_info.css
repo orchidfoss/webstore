@@ -214,6 +214,13 @@
   }
 }
 
+#webapp .section {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background: var(--background);
+}
+
 #webapp .section ul {
   width: calc(100% - 3rem);
   margin: 1rem auto;
@@ -270,6 +277,23 @@
   padding: 0 0 1.5rem;
 }
 
+html[dir="ltr"] #webapp-screenshots.start,
+html[dir="rtl"] #webapp-screenshots.end {
+  mask-image: linear-gradient(to right, white 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, white 90%, transparent);
+}
+
+html[dir="ltr"] #webapp-screenshots.end,
+html[dir="rtl"] #webapp-screenshots.start {
+  mask-image: linear-gradient(to left, white 90%, transparent);
+  -webkit-mask-image: linear-gradient(to left, white 90%, transparent);
+}
+
+#webapp-screenshots.center {
+  mask-image: linear-gradient(to left, transparent, white 10%, white 90%, transparent);
+  -webkit-mask-image: linear-gradient(to left, transparent, white 10%, white 90%, transparent);
+}
+
 #webapp-screenshots::-webkit-scrollbar {
   display: none;
 }
@@ -281,6 +305,10 @@
   height: 20rem;
   box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
   background: #fff;
+}
+
+#webapp-screenshots > img:last-child {
+  margin: 0;
 }
 
 #webapp-description {
@@ -364,36 +392,25 @@
 }
 
 @media screen and (min-width: 1280px) {
-  #webapp {
-    padding-bottom: 3rem;
-  }
-
-  #webapp .banner-container {
-    height: calc(100vh - 5rem);
-    position: absolute;
-    max-height: unset;
-  }
-
-  #webapp-banner {
-    background: var(--background) linear-gradient(to bottom, transparent, rgba(0,0,0,0.5));
-    height: calc(100vw / 1.75);
-  }
-
   #webapp .container {
-    width: calc(100% - 128px);
-    margin: 50vh 64px 48px;
-    padding: 1rem;
+    width: 100%;
+    padding: 1.5rem 64px;
     box-sizing: border-box;
-    border-radius: 1.5rem;
-    position: relative;
-    left: 0;
-    top: 5rem;
     display: block;
-    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
     overflow: hidden;
+    position: relative;
+    z-index: 1;
   }
 
   #webapp .container.transitioning {
     transition: all 0.5s cubic-bezier(0.2, 0.9, 0.1, 1);
+  }
+
+  #webapp .section {
+    display: flex;
+  }
+
+  #webapp .content-col {
+    width: 50%;
   }
 }

@@ -9,7 +9,7 @@
       linkTo: '#'
     },
     {
-      background: 'images/unified.svg',
+      background: 'images/libremedia_bg.svg',
       wordmark: 'images/libremedia_wordmark.svg',
       detail: 'slideshow-libremedia-detail',
       linkTo: 'https://sites.google.com/view/libremedia/home',
@@ -73,6 +73,7 @@
     if (slideshow.linkTo) {
       var link = document.createElement('a');
       link.href = slideshow.linkTo;
+      link.target = '_blank';
       if (slideshow.linkText) {
         link.dataset.l10nId = slideshow.linkText;
       } else {
@@ -125,7 +126,7 @@
     } else {
       slideshowDots.children[0].classList.add('active');
     }
-  }, 3000);
+  }, 4000);
 
   backButton.addEventListener('click', () => {
     var selectedSlideshow = slideshowPosters.querySelector('.slideshow.current');
