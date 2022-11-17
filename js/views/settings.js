@@ -38,7 +38,7 @@
   }
 
   // Dark Mode
-  var darkModeEnabled = localStorage.getItem('ws.webstore.darkMode') == 'true';
+  var darkModeEnabled = (localStorage.getItem('ws.webstore.darkMode') == 'true') || false;
   var darkModeCheckbox = document.getElementById('settings-dark-mode');
 
   darkModeCheckbox.checked = darkModeEnabled;
@@ -52,7 +52,7 @@
   });
 
   // Auto Update (Service Worker Needed)
-  var autoUpdateEnabled = localStorage.getItem('ws.webstore.autoUpdate') == 'true';
+  var autoUpdateEnabled = (localStorage.getItem('ws.webstore.autoUpdate') == 'true') || true;
   var autoUpdateCheckbox = document.getElementById('settings-auto-update');
 
   autoUpdateCheckbox.checked = autoUpdateEnabled;
@@ -85,4 +85,24 @@
     });
   };
   client.send();
+
+  // History
+  var historyEnabled = (localStorage.getItem('ws.webstore.historyEnabled') == 'true') || true;
+  var historyCheckbox = document.getElementById('settings-history');
+  var historyClearButton = document.getElementById('settings-history-clear');
+  var historyButton = document.getElementById("sidebar-history");
+
+  historyCheckbox.checked = historyEnabled;
+  historyCheckbox.addEventListener('change', function() {
+    localStorage.setItem('ws.webstore.historyEnabled', historyCheckbox.checked);
+    if (historyCheckbox.checked) {
+      historyButton.style.display = 'block';
+    } else {
+      historyButton.style.display = 'none';
+    }
+  });
+
+  historyCheckbox.addEventListener('click', function() {
+    localStorage.setItem('ws.webstore.history', '[]');
+  });
 })(window);

@@ -6,6 +6,11 @@
 
   exports.openContentView = function openContentView(id, highlight = true) {
     sidebar.classList.remove('visible');
+    if (id !== 'content' && id !== 'loading-screen') {
+      window.history.pushState({ html: "", pageTitle: "" }, "", "?page=" + id);
+    } else {
+      window.history.pushState({ html: "", pageTitle: "" }, "", "?");
+    }
 
     var element = document.getElementById(id);
     if (!element.classList.contains('visible')) {
@@ -30,6 +35,21 @@
         }
 
         linkItem.setAttribute('aria-selected', true);
+      }
+    }
+  }
+
+  var paramString = location.search.substring(1);
+  var queryString = new URLSearchParams(paramString);
+  if (location.search !== "") {
+    for (let pair of queryString.entries()) {
+      switch (pair[0]) {
+        case "page":
+          openContentView(pair[1]);
+          break;
+
+        default:
+          break;
       }
     }
   }

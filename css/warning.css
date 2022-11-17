@@ -1,9 +1,9 @@
 .warning {
   width: calc(100% - 2rem);
-  max-width: 1004px;
+  max-width: 1024px;
   background: var(--background-plus);
-  border-radius: 0.6rem;
-  box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.25);
+  border-radius: 1.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
   margin-inline-end: auto;
   display: flex;
   flex-direction: column;
@@ -33,6 +33,14 @@
   flex: 1;
   width: 100%;
   padding: 0.4rem 0;
+}
+
+.warning .message div span {
+  display: block;
+}
+
+.warning .message div span:first-child {
+  font-weight: bold;
 }
 
 .warning > a {

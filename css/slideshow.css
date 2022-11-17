@@ -243,13 +243,13 @@ html[dir="rtl"] .slideshow > div a:hover:after {
 @media screen and (orientation: landscape) {
   .slideshow-container {
     width: calc(100% - 2rem);
-    max-width: 1004px;
+    max-width: 1024px;
     margin: 0.5rem 1rem 3.5rem;
     aspect-ratio: 2 / 1;
   }
 
   .slideshow {
-    border-radius: 0.6rem;
+    border-radius: 1.5rem;
     box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
   }
 
@@ -277,7 +277,7 @@ html[dir="rtl"] .slideshow > div a:hover:after {
 
   .slideshow-container .controls button {
     border-radius: 2rem;
-    background: var(--button-normal);
+    background: var(--button-plus);
     box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.25);
     color: var(--text-color);
   }
@@ -291,7 +291,7 @@ html[dir="rtl"] .slideshow > div a:hover:after {
   }
 
   .slideshow {
-    border-radius: 0.6rem;
+    border-radius: 1.5rem;
     box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
   }
 

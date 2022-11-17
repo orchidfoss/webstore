@@ -8,7 +8,9 @@ import {
   getDocs,
   onSnapshot,
   setDoc,
-  collection
+  collection,
+  deleteDoc,
+  deleteField
 } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js';
 import {
   getStorage,
@@ -301,6 +303,13 @@ var OrchidServices = {
     const docRef = doc(db, path);
     setDoc(docRef, value, { merge: true });
   },
+
+  remove: async function os_remove(path) {
+    const docRef = doc(db, path);
+    await deleteDoc(docRef);
+  },
+
+  removeField: deleteField,
 
   storage: {
     /**

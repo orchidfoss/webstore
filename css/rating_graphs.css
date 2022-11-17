@@ -1,0 +1,54 @@
+.rating-graphs li {
+  display: flex !important;
+}
+
+.rating-graphs li > .rating {
+  min-width: 3rem;
+  padding-inline-end: 1rem;
+  box-sizing: border-box;
+}
+
+.rating-graphs li > .progress {
+  width: 100%;
+  flex: 1;
+  height: 2.4rem;
+  border-radius: 1.2rem;
+  background: var(--background);
+  position: relative;
+}
+
+.rating-graphs li > .progress:before {
+  content: '';
+  width: var(--progress);
+  height: 2.4rem;
+  border-radius: 1.2rem;
+  background: var(--accent-color);
+  position: absolute;
+}
+
+.rating-graphs li > .users {
+  min-width: 3rem;
+  padding-inline-start: 1rem;
+  box-sizing: border-box;
+}
+
+/* Accent Colors */
+.rating-graphs .graph-1 {
+  --accent-color: #40a060;
+}
+
+.rating-graphs .graph-2 {
+  --accent-color: #60e080;
+}
+
+.rating-graphs .graph-3 {
+  --accent-color: #ffc000;
+}
+
+.rating-graphs .graph-4 {
+  --accent-color: #ff6040;
+}
+
+.rating-graphs .graph-5 {
+  --accent-color: #c00040;
+}

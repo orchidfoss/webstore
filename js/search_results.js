@@ -1,7 +1,7 @@
 (function (exports) {
   "use strict";
 
-  var history = JSON.parse(localStorage.getItem("ws.webstore.history")) || [];
+  var history = JSON.parse(localStorage.getItem("ws.webstore.searchHistory")) || [];
 
   var searchbox = document.getElementById("searchbox");
   var searchboxInput = document.getElementById("searchbox-input");
@@ -25,7 +25,7 @@
       }
 
       history.push(value);
-      localStorage.setItem("ws.webstore.history", JSON.stringify(history));
+      localStorage.setItem("ws.webstore.searchHistory", JSON.stringify(history));
       OrchidServices.get("webstore_metadata/profile_logs").then(function (
         data,
         id
@@ -66,7 +66,7 @@
       data,
       id
     ) {
-      history = JSON.parse(localStorage.getItem("ws.webstore.history")) || [];
+      history = JSON.parse(localStorage.getItem("ws.webstore.searchHistory")) || [];
       if (!data.search_keywords) {
         return;
       }

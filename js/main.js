@@ -1,20 +1,26 @@
 (function (exports) {
   "use strict";
 
-  window.EnglishToArabicNumerals = function EnglishToArabicNumerals(numberString) {
-    var arabicNumerals = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
-    if (document.dir == 'rtl') {
-      return numberString.toLocaleString(navigator.mozL10n.language.code).replace(/[0-9]/g, function(w) {
-        return arabicNumerals[+w];
-      });
+  exports.EnglishToArabicNumerals = function EnglishToArabicNumerals(
+    numberString
+  ) {
+    var arabicNumerals = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"];
+    if (document.dir == "rtl") {
+      return numberString
+        .toLocaleString(navigator.mozL10n.language.code)
+        .replace(/[0-9]/g, function (w) {
+          return arabicNumerals[+w];
+        });
     } else {
       return numberString;
     }
-  }
+  };
 
   var offlineMessage = document.getElementById("offline-message");
-  var offlineMessageSettingsButton = offlineMessage.querySelector(".settings-button");
-  var offlineMessageReloadButton = offlineMessage.querySelector(".reload-button");
+  var offlineMessageSettingsButton =
+    offlineMessage.querySelector(".settings-button");
+  var offlineMessageReloadButton =
+    offlineMessage.querySelector(".reload-button");
 
   offlineMessageReloadButton.onclick = () => {
     location.reload();
@@ -52,12 +58,12 @@
     if (navigator.onLine) {
       initializeUser();
     } else {
-      offlineMessage.classList.add('visible');
+      offlineMessage.classList.add("visible");
       profileButton.style.display = "none";
     }
 
     splashscreen.classList.add("hidden");
-    openContentView('content');
+    openContentView("content");
   });
 
   toggleSidebarButton.addEventListener("click", () => {
@@ -65,22 +71,37 @@
   });
 
   // Side Tabs
-  var allAppsButton = document.getElementById('sidebar-allapps');
-  var installedAppsButton = document.getElementById('sidebar-installed-apps');
-  var settingsButton = document.getElementById('sidebar-settings');
+  var allAppsButton = document.getElementById("sidebar-allapps");
+  var featuredButton = document.getElementById("sidebar-featured");
+  var historyButton = document.getElementById("sidebar-history");
+  var installedAppsButton = document.getElementById("sidebar-installed-apps");
+  var settingsButton = document.getElementById("sidebar-settings");
 
   allAppsButton.onclick = () => {
     var selected = document.querySelector('[aria-selected="true"]');
-    selected.setAttribute('aria-selected', null);
-    allAppsButton.setAttribute('aria-selected', true);
-    openContentView('content', true);
+    selected.setAttribute("aria-selected", null);
+    allAppsButton.setAttribute("aria-selected", true);
+    openContentView("content", true);
+  };
+
+  featuredButton.onclick = () => {
+    openContentView("featured", true);
+  };
+
+  var isHistoryEnabled =
+    localStorage.getItem("ws.webstore.historyEnabled") == "true" || true;
+  if (isHistoryEnabled) {
+    historyButton.style.display = "none";
+  }
+  historyButton.onclick = () => {
+    openContentView("history", true);
   };
 
   installedAppsButton.onclick = () => {
-    openContentView('installed-apps', true);
+    openContentView("installed-apps", true);
   };
 
   settingsButton.onclick = () => {
-    openContentView('settings', true);
+    openContentView("settings", true);
   };
 })(window);

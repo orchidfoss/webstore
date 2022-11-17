@@ -3,13 +3,21 @@
   left: 0;
   top: 5rem;
   background: var(--background);
-  display: none;
+  display: block;
   width: 100%;
   perspective: 100vh;
+
+  transition: all 0.3s ease-in-out;
+  transform: scale(0);
+  opacity: 0;
+  visibility: hidden;
 }
 
 #webapp.visible {
-  display: block;
+  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.1, 1);
+  transform: scale(1);
+  opacity: 1;
+  visibility: visible;
 }
 
 #webapp .banner-container {
@@ -64,9 +72,9 @@
 #webapp .app-header .app-header-info img {
   width: 7rem;
   height: 7rem;
-  /* background: #fff;
+  background: #fff;
   border-radius: 25%;
-  box-shadow: 0 0.2rem 0.4rem rgba(0,0,0,0.3); */
+  box-shadow: 0 0.2rem 0.4rem rgba(0,0,0,0.3);
   -moz-margin-end: 1rem;
   margin-inline-end: 1rem;
 }
@@ -150,7 +158,7 @@
 
 #webapp .app-header .options button {
   border: none;
-  background: var(--button-normal);
+  background: var(--button-plus);
   border-radius: 2rem;
   padding: 0 3rem;
   box-sizing: border-box;
@@ -181,37 +189,6 @@
   position: relative;
   z-index: 5;
   background: var(--background);
-}
-
-#webapp .container.fade-in {
-  transform-origin: top;
-  animation: fade-in 0.5s cubic-bezier(0.2, 0.9, 0.1, 1.125);
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(128px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-#webapp .container.fade-out {
-  animation: fade-out 0.5s cubic-bezier(0.2, 0.9, 0.1, 1.0);
-}
-
-@keyframes fade-out {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-128px);
-  }
 }
 
 #webapp .section {
@@ -412,5 +389,10 @@ html[dir="rtl"] #webapp-screenshots.start {
 
   #webapp .content-col {
     width: 50%;
+  }
+
+  #webapp .app-header .app-header-info img {
+    width: 10rem;
+    height: 10rem;
   }
 }
