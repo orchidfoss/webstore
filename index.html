@@ -32,7 +32,7 @@
   <link rel="stylesheet" href="lib/gaia-icons/gaia-icons.css">
   <link rel="stylesheet" href="lib/gaia-icons/bidi-helper.css">
   <link rel="stylesheet" href="css/splashscreen.css">
-  <link rel="stylesheet" href="css/webstore.css">
+  <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/warning.css">
   <link rel="stylesheet" href="css/slideshow.css">
   <link rel="stylesheet" href="css/filters.css">
@@ -45,23 +45,34 @@
   <link rel="stylesheet" href="css/seekbars.css">
   <link rel="stylesheet" href="css/buttons.css">
   <link rel="stylesheet" href="css/rating_graphs.css">
+  <link rel="stylesheet" href="css/input_areas.css">
+  <link rel="stylesheet" href="css/submit_tags.css">
 
   <!-- View Styles -->
-  <link rel="stylesheet" href="css/settings.css">
+  <link rel="stylesheet" href="css/submit.css">
+  <link rel="stylesheet" href="css/featured.css">
   <link rel="stylesheet" href="css/history.css">
+  <link rel="stylesheet" href="css/settings.css">
 
+  <script src="http://www.google.com/jsapi?key=AIzaSyA5m1Nc8ws2BbmPRwKu5gFradvD_hgq6G0" type="text/javascript"></script>
   <script defer src="services/script.js" type="module"></script>
+  <script src="lib/smooth-scrollbar.js"></script>
+  <script src="lib/plugins/overscroll.js"></script>
   <script defer src="js/main.js"></script>
   <script defer src="js/languages.js"></script>
   <script defer src="js/dark_mode.js"></script>
   <script defer src="js/comments.js"></script>
   <script defer src="js/views.js"></script>
   <script defer src="js/file_data.js"></script>
+  <script defer src="js/light_or_dark.js"></script>
+  <script defer src="js/color_picker.js"></script>
   <script defer src="js/slideshow.js"></script>
   <script defer src="js/search_results.js"></script>
   <script defer src="js/webapps.js"></script>
+  <script defer src="js/submit_tags.js"></script>
 
   <!-- View Scripts -->
+  <script defer src="js/views/submit.js"></script>
   <script defer src="js/views/content.js"></script>
   <script defer src="js/views/featured.js"></script>
   <script defer src="js/views/history.js"></script>
@@ -93,21 +104,14 @@
   <header class="oui--header" id="header">
     <a href="#" id="back-button" data-icon="back"></a>
     <a href="#" id="toggle-sidebar-button" data-icon="menu"></a>
-    <div id="home-header">
-      <a href="#" class="logo"></a>
-      <form action="" id="searchbox" autocomplete="off">
-        <div class="search">
-          <input type="text" data-l10n-id="type-here-to-search" id="searchbox-input">
-          <button type="reset" data-icon="close"></button>
-        </div>
-        <ul class="results" id="search-results"></ul>
-      </form>
-      <h1></h1>
-    </div>
-    <div id="app-header">
-      <a href="#" class="logo" id="app-header-icon"></a>
-      <h1 id="app-header-name"></h1>
-    </div>
+    <a href="#" class="logo"></a>
+    <form action="" id="searchbox" autocomplete="off">
+      <div class="search">
+        <input type="text" data-l10n-id="type-here-to-search" id="searchbox-input">
+        <button type="reset" data-icon="close"></button>
+      </div>
+      <ul class="results" id="search-results"></ul>
+    </form>
     <h1></h1>
     <a href="#" data-icon="help"></a>
     <a href="#" id="profile-button">
@@ -117,7 +121,7 @@
   </header>
 
   <nav id="sidebar">
-    <a href="/?page=submit/webapp" id="upload-button" data-icon="add" data-l10n-id="nav-upload"></a>
+    <a href="#" id="upload-button" data-icon="add" data-l10n-id="nav-upload"></a>
     <ul>
       <li><a href="#" data-icon="apps" data-l10n-id="nav-allWebapps" id="sidebar-allapps" aria-selected="true"></a></li>
       <li><a href="#" data-icon="auto-enhance-spark" data-l10n-id="nav-featured" id="sidebar-featured"></a></li>
@@ -137,6 +141,63 @@
       <li><a href="#" data-icon="settings" data-l10n-id="nav-settings" id="sidebar-settings"></a></li>
     </ul>
   </nav>
+
+  <main id="submit" class="content">
+    <div class="gaia-list">
+      <header data-l10n-id="submit"></header>
+      <ul>
+        <li class="vbox">
+          <p data-l10n-id="submit-icon"></p>
+          <input type="file" name="" id="submit-icon">
+        </li>
+        <li class="vbox">
+          <p data-l10n-id="submit-manifest"></p>
+          <input type="file" name="" id="submit-manifest">
+        </li>
+        <li class="vbox">
+          <p data-l10n-id="submit-package"></p>
+          <input type="file" name="" id="submit-package">
+        </li>
+        <li class="vbox">
+          <p data-l10n-id="submit-categories"></p>
+          <input type="text" name="" id="submit-categories">
+        </li>
+        <li class="vbox">
+          <p data-l10n-id="submit-tags"></p>
+          <input type="text" name="" id="submit-tags">
+        </li>
+        <li class="active">
+          <label class="pack-switch reverse">
+            <input type="checkbox" id="submit-has-ads">
+            <span data-l10n-id="submit-hasAds"></span>
+          </label>
+        </li>
+        <li class="active">
+          <label class="pack-switch reverse">
+            <input type="checkbox" id="submit-has-tracking">
+            <span data-l10n-id="submit-hasTracking"></span>
+          </label>
+        </li>
+        <li class="vbox">
+          <p data-l10n-id="submit-ageRating"></p>
+          <select name="" id="submit-age-rating">
+            <option value="e" data-l10n-id="ageRating-e"></option>
+            <option value="e10plus" data-l10n-id="ageRating-e10plus"></option>
+            <option value="t" data-l10n-id="ageRating-t"></option>
+            <option value="m" data-l10n-id="ageRating-m"></option>
+            <option value="ao" data-l10n-id="ageRating-ao"></option>
+          </select>
+        </li>
+        <li class="vbox">
+          <p data-l10n-id="submit-price"></p>
+          <input type="number" name="" id="submit-price">
+        </li>
+      </ul>
+      <ul>
+        <li id="submit-button" class="active" data-l10n-id="submit"></li>
+      </ul>
+    </div>
+  </main>
 
   <main id="content" class="content">
     <div class="warning">
@@ -182,7 +243,15 @@
     <div id="webapps"></div>
   </main>
 
-  <main id="featured" class="content"></main>
+  <main id="featured" class="content">
+    <div class="poster">
+      <img src="images/keyarts/explore.png" alt="">
+      <div>
+        <h1>Explore</h1>
+        <p>Check out our featured content in the Webstore!</p>
+      </div>
+    </div>
+  </main>
 
   <main id="history" class="content">
     <id id="history-timeline"></id>
@@ -221,6 +290,12 @@
           <label class="vbox">
             <p data-l10n-id="settings-language"></p>
             <select name="" id="settings-languages"></select>
+          </label>
+        </li>
+        <li class="active">
+          <label class="pack-checkbox reverse">
+            <input type="checkbox" id="settings-elastic-scroll">
+            <span data-l10n-id="settings-elasticScroll"></span>
           </label>
         </li>
       </ul>
@@ -289,12 +364,12 @@
     </div>
 
     <div class="container" id="webapp-card">
-      <header class="app-header">
+      <header class="app-header" id="webapp-header">
         <div class="app-header-info">
           <img src="" alt="" id="webapp-icon">
           <div class="context">
             <div id="webapp-name"></div>
-            <div id="webapp-author"></div>
+            <a href="#" target="_blank" id="webapp-author"></a>
             <div class="ratings">
               <div id="webapp-star-ratings"></div>
               <div id="webapp-average-rating" data-l10n-id="starRating-outOf"></div>
@@ -323,64 +398,93 @@
             <div id="webapp-screenshots"></div>
           </div>
 
-          <header data-l10n-id="webapp-info"></header>
+          <header data-l10n-id="webapp-description"></header>
           <ul>
-            <li id="webapp-size" data-l10n-id="webapp-size"></li>
-            <li id="webapp-downloads" data-l10n-id="webapp-downloads"></li>
-            <li id="webapp-has-ads" data-l10n-id="webapp-hasAds"></li>
-            <li id="webapp-has-tracking" data-l10n-id="webapp-hasTracking"></li>
+            <li id="webapp-description"></li>
+            <li>
+              <a href="#" id="webapp-description-expand" data-icon="expand-chevron">
+                <span data-l10n-id="show-more"></span>
+              </a>
+            </li>
           </ul>
 
           <header data-l10n-id="webapp-tags"></header>
           <ul>
-            <li id="webapp-tags"></li>
+            <li>
+              <div id="webapp-tags"></div>
+            </li>
           </ul>
         </div>
 
         <div class="content-col">
-          <header data-l10n-id="webapp-description"></header>
+          <header data-l10n-id="webapp-info"></header>
           <ul>
-            <li id="webapp-description"></li>
+            <li>
+              <span data-l10n-id="webapp-contacts"></span>
+              <div id="webapp-contacts" class="list"></div>
+            </li>
+            <li>
+              <span data-l10n-id="webapp-terms"></span>
+              <div id="webapp-terms" class="list"></div>
+            </li>
+            <li id="webapp-release-date" data-l10n-id="webapp-releaseDate"></li>
+            <li id="webapp-size" data-l10n-id="webapp-size"></li>
+            <li id="webapp-downloads" data-l10n-id="webapp-downloads"></li>
+            <li id="webapp-has-ads" data-l10n-id="webapp-hasAds"></li>
+            <li id="webapp-has-tracking" data-l10n-id="webapp-hasTracking"></li>
+            <li>
+              <span data-l10n-id="webapp-languages"></span>
+              <div id="webapp-languages"></div>
+            </li>
           </ul>
 
           <header data-l10n-id="webapp-comments" id="webapp-comments-header"></header>
           <ul class="rating-graphs" id="webapp-rating-graphs">
             <li class="graph-1">
               <span class="rating">5</span>
-              <div class="progress" style="--progress: 50%;"></div>
-              <span class="users">50</span>
+              <div class="progress"></div>
+              <span class="users"></span>
             </li>
             <li class="graph-2">
               <span class="rating">4</span>
-              <div class="progress" style="--progress: 25%;"></div>
-              <span class="users">25</span>
+              <div class="progress"></div>
+              <span class="users"></span>
             </li>
             <li class="graph-3">
               <span class="rating">3</span>
-              <div class="progress" style="--progress: 25%;"></div>
-              <span class="users">25</span>
+              <div class="progress"></div>
+              <span class="users"></span>
             </li>
             <li class="graph-4">
               <span class="rating">2</span>
-              <div class="progress" style="--progress: 15%;"></div>
-              <span class="users">15</span>
+              <div class="progress"></div>
+              <span class="users"></span>
             </li>
             <li class="graph-5">
               <span class="rating">1</span>
-              <div class="progress" style="--progress: 10%;"></div>
-              <span class="users">10</span>
+              <div class="progress"></div>
+              <span class="users"></span>
             </li>
           </ul>
+
           <div class="comments-wrapper" id="webapp-comments">
             <label for="" class="star-rating">
               <span data-l10n-id="webapp-starRating"></span>
-              <input type="number" min="1" max="5" value="5">
+              <form class="star-rating-form">
+                <input type="radio" id="rating-5" name="rating" value="5" checked="checked">
+                <input type="radio" id="rating-4" name="rating" value="4">
+                <input type="radio" id="rating-3" name="rating" value="3">
+                <input type="radio" id="rating-2" name="rating" value="2">
+                <input type="radio" id="rating-1" name="rating" value="1">
+              </form>
             </label>
-            <form action="">
+
+            <form action="" class="comment-form">
               <textarea data-l10n-id="webapp-commentInput"></textarea>
               <button type="reset" data-icon="close"></button>
               <button type="submit" data-icon="send"></button>
             </form>
+
             <a href="#" class="expand-button" data-icon="expand-chevron">
               <span data-l10n-id="show-more"></span>
             </a>

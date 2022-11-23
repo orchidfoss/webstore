@@ -30,7 +30,7 @@
 .oui--header a,
 .oui--header button {
   margin: 0.5rem 0;
-  padding: 0 1rem;
+  padding: 0 1rem !important;
   box-sizing: border-box;
   min-width: 4rem;
   height: 4rem;
@@ -61,6 +61,11 @@
 .oui--header button[data-icon]:before {
   font-size: 2rem;
   font-weight: normal;
+  width: unset;
+  height: inherit;
+  line-height: inherit;
+  margin: 0;
+  position: static;
 }
 
 .oui--header a > img,
@@ -85,7 +90,7 @@
 .oui--header form {
   width: 100%;
   max-width: 400px;
-  background: var(--background-minus, #b0d0ff);
+  background: var(--background-plus, #fff);
   height: 3.6rem;
   margin: 0.7rem 0.5rem;
   border-radius: 1.8rem;
@@ -106,6 +111,7 @@
   padding-inline-start: 4rem;
   box-sizing: border-box;
   border-radius: 1.5rem 1.5rem 0 0;
+  height: 3.6rem;
   transition: all 0.3s cubic-bezier(0.2, 0.9, 0.1, 1) 0.1s;
 }
 html[dir="ltr"] .oui--header form .search {

@@ -49,10 +49,11 @@
       root.classList.remove('transition');
     });
     root.dataset.theme = darkModeCheckbox.checked ? 'dark' : 'light';
+    root.dataset.accentScheme = darkModeCheckbox.checked ? "light" : "dark";
   });
 
   // Auto Update (Service Worker Needed)
-  var autoUpdateEnabled = (localStorage.getItem('ws.webstore.autoUpdate') == 'true') || true;
+  var autoUpdateEnabled = (localStorage.getItem('ws.webstore.auto_update') == 'true') || true;
   var autoUpdateCheckbox = document.getElementById('settings-auto-update');
 
   autoUpdateCheckbox.checked = autoUpdateEnabled;
@@ -85,6 +86,16 @@
     });
   };
   client.send();
+
+  // Elastic Scroll
+  var elasticScrollEnabled = (localStorage.getItem('ws.webstore.elastic_scroll') == 'true') || false;
+  var elasticScrollCheckbox = document.getElementById('settings-elastic-scroll');
+
+  elasticScrollCheckbox.checked = elasticScrollEnabled;
+  elasticScrollCheckbox.addEventListener('change', function() {
+    localStorage.setItem('ws.webstore.elastic_scroll', elasticScrollCheckbox.checked);
+    location.reload();
+  });
 
   // History
   var historyEnabled = (localStorage.getItem('ws.webstore.historyEnabled') == 'true') || true;

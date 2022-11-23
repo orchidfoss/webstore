@@ -5,7 +5,11 @@
   background: var(--background);
   display: block;
   width: 100%;
+  height: calc(100% - 5rem);
   perspective: 100vh;
+  z-index: 5;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   transition: all 0.3s ease-in-out;
   transform: scale(0);
@@ -61,6 +65,19 @@
   flex-direction: column;
   padding: 1rem;
   box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--background);
+  transition: all 0.5s cubic-bezier(0.2, 0.9, 0.1, 1);
+}
+
+#webapp .app-header.visible {
+  box-shadow: 0 2rem 1rem -1rem rgba(0,0,0,0.1);
+  height: 6rem;
+  background: var(--background-plus);
+  padding: 1rem;
+  flex-direction: row;
 }
 
 #webapp .app-header .app-header-info {
@@ -72,11 +89,17 @@
 #webapp .app-header .app-header-info img {
   width: 7rem;
   height: 7rem;
-  background: #fff;
+  background: transparent;
   border-radius: 25%;
   box-shadow: 0 0.2rem 0.4rem rgba(0,0,0,0.3);
   -moz-margin-end: 1rem;
   margin-inline-end: 1rem;
+  transition: all 0.5s cubic-bezier(0.2, 0.9, 0.1, 1);
+}
+
+#webapp .app-header.visible .app-header-info img {
+  width: 4rem;
+  height: 4rem;
 }
 
 #webapp .app-header .context {
@@ -88,17 +111,39 @@
 
 #webapp-name {
   font-size: 2rem;
-  font-weight: bold;
+  font-variation-settings: 'wght' 300;
   font-family: 'Readex Pro', 'IBM Plex Sans Arabic', 'Noto Sans', 'Noto Naskh Arabic', system-ui;
+  transition: all 0.5s cubic-bezier(0.2, 0.9, 0.1, 1);
+}
+
+.app-header.visible #webapp-name {
+  font-size: 1.6rem;
+  font-variation-settings: 'wght' 700;
 }
 
 #webapp-author {
   color: var(--accent-color);
   text-decoration: none;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
 }
 
-#webapp-author[href]:hover {
-  text-decoration: underline;
+#webapp-author.verified:after {
+  content: 'tick-circle';
+  font-family: 'gaia-icons';
+  margin-inline-start: 0.5rem;
+}
+
+#webapp-author[href] > span {
+  height: 1em;
+  line-height: 1em;
+  transition: box-shadow 0.2s ease;
+}
+
+#webapp-author[href]:hover > span {
+  box-shadow: 0 0.2rem 0 var(--accent-color);
 }
 
 #webapp-average-rating {
@@ -110,6 +155,10 @@
   display: flex;
   overflow: hidden;
   border-radius: 0.6rem;
+}
+
+.app-header.visible #webapp-categories {
+  display: none;
 }
 
 #webapp-categories > span {
@@ -124,16 +173,20 @@
   overflow: hidden;
   height: 3rem;
   background: var(--background-plus);
-  border-radius: 0.6rem;
-  -moz-margin-end: 0.6rem;
-  margin-inline-end: 0.6rem;
-  padding: 0 0.6rem;
+  border-radius: 1.5rem;
+  -moz-margin-end: 0.4rem;
+  margin-inline-end: 0.4rem;
+  padding: 0 1rem;
   box-sizing: border-box;
   flex: none;
 }
 
 .ratings {
   display: flex;
+}
+
+.app-header.visible .ratings {
+  display: none;
 }
 
 #webapp-star-ratings {
@@ -156,9 +209,13 @@
   width: 100%;
 }
 
+#webapp .app-header.visible .options {
+  display: none;
+}
+
 #webapp .app-header .options button {
   border: none;
-  background: var(--button-plus);
+  background: var(--background-plus);
   border-radius: 2rem;
   padding: 0 3rem;
   box-sizing: border-box;
@@ -172,16 +229,16 @@
 }
 
 #webapp .app-header .options button:hover {
-  background: var(--button-hover);
+  background: var(--button-background-plus);
 }
 
 #webapp .app-header .options button:active {
-  background: var(--button-active);
+  background: var(--button-background-minus);
 }
 
 #webapp .app-header .options button.recommend {
   background: var(--accent-color);
-  color: var(--accent-color-text);
+  color: var(--accent-text-color);
 }
 
 /* Content */
@@ -226,6 +283,40 @@
   font-size: 1.6rem;
   font-weight: normal;
   color: var(--text-color);
+}
+
+#webapp .section ul li:last-child {
+  border-bottom: none;
+}
+
+#webapp .section ul li > div a {
+  display: inline-block;
+  color: var(--accent-color);
+  text-decoration: none;
+  height: 1em;
+  line-height: 1em;
+  margin: 0.5rem 0;
+  margin-inline-end: 1rem;
+  transition: box-shadow 0.2s ease;
+}
+
+#webapp .section ul li > div a:hover {
+  box-shadow: 0 0.2rem 0 var(--accent-color);
+}
+
+#webapp .section ul li > div a:active {
+  opacity: 0.5;
+}
+
+#webapp .section ul li > div.list {
+  display: flex;
+  flex-direction: column;
+}
+
+#webapp .section ul li > div.list a {
+  display: inline-block;
+  margin: 0.5rem 0;
+  width: max-content;
 }
 
 #webapp .section header {
@@ -275,7 +366,7 @@ html[dir="rtl"] #webapp-screenshots.start {
   display: none;
 }
 
-#webapp-screenshots > img {
+#webapp-screenshots img {
   -moz-margin-end: 1rem;
   margin-inline-end: 1rem;
   border-radius: 0.8rem;
@@ -294,6 +385,58 @@ html[dir="rtl"] #webapp-screenshots.start {
   color: var(--text-color);
   padding: 1rem;
   border-top: solid 0.1rem rgba(0,0,0,0.125);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 2.2rem;
+  max-height: 19rem;
+  background: linear-gradient(to bottom, var(--text-color) 50%, transparent);
+  color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#webapp-description.maximized {
+  max-height: unset;
+  background: unset;
+  color: var(--text-color);
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+}
+
+#webapp-description-expand {
+  width: 100%;
+  height: 3rem;
+  line-height: 3rem;
+  display: block;
+  font-size: 1.6rem;
+  color: var(--accent-color);
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#webapp-description-expand:active {
+  opacity: 0.5;
+}
+
+#webapp-description-expand:hover > span {
+  text-decoration: underline;
+}
+
+#webapp-description-expand[data-icon]:before {
+  margin-inline-start: 1rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.1, 1);
+}
+
+#webapp-description-expand.active[data-icon]:before {
+  transform: rotate(180deg);
 }
 
 #webapp-patch-notes {
@@ -309,6 +452,10 @@ html[dir="rtl"] #webapp-screenshots.start {
   flex-direction: column;
 }
 
+.app-header.visible .app-header-actions {
+  flex-direction: row;
+}
+
 .app-header-actions > p {
   margin: 1.5rem 0 0.5rem;
   padding: 0 1rem;
@@ -318,6 +465,11 @@ html[dir="rtl"] #webapp-screenshots.start {
   line-height: 2.2rem;
 }
 
+.app-header.visible .app-header-actions > p {
+  line-height: 4rem;
+  margin: 0;
+}
+
 #webapp-age-rating {
   width: 100%;
   max-width: 320px;
@@ -325,6 +477,10 @@ html[dir="rtl"] #webapp-screenshots.start {
   margin: 1rem 1rem 0;
   display: flex;
   flex-wrap: wrap;
+}
+
+.app-header.visible #webapp-age-rating {
+  display: none;
 }
 
 #webapp-age-rating > img {
@@ -356,6 +512,10 @@ html[dir="rtl"] #webapp-screenshots.start {
     width: unset;
   }
 
+  #webapp .app-header.visible .options {
+    display: inline-flex;
+  }
+
   #webapp .app-header .options button {
     width: unset;
     margin: 0;
@@ -374,7 +534,6 @@ html[dir="rtl"] #webapp-screenshots.start {
     padding: 1.5rem 64px;
     box-sizing: border-box;
     display: block;
-    overflow: hidden;
     position: relative;
     z-index: 1;
   }
@@ -389,6 +548,11 @@ html[dir="rtl"] #webapp-screenshots.start {
 
   #webapp .content-col {
     width: 50%;
+  }
+
+  #webapp .app-header.visible {
+    background: var(--background);
+    border-top: solid 0.1rem rgba(0,0,0,0.125);
   }
 
   #webapp .app-header .app-header-info img {

@@ -16,6 +16,24 @@
     }
   };
 
+  var elasticScrollEnabled = (localStorage.getItem('ws.webstore.elastic_scroll') == 'true') || false;
+  if (elasticScrollEnabled) {
+    var Scrollbar = window.Scrollbar;
+    Scrollbar.use(window.OverscrollPlugin);
+    Scrollbar.init(document.querySelector('#webapp'), {
+      plugins: {
+        overscroll: {}
+      }
+    });
+    document.querySelectorAll('.content').forEach((item) => {
+      Scrollbar.init(item, {
+        plugins: {
+          overscroll: {}
+        }
+      });
+    });
+  }
+
   var offlineMessage = document.getElementById("offline-message");
   var offlineMessageSettingsButton =
     offlineMessage.querySelector(".settings-button");
@@ -71,11 +89,16 @@
   });
 
   // Side Tabs
+  var uploadButton = document.getElementById("upload-button");
   var allAppsButton = document.getElementById("sidebar-allapps");
   var featuredButton = document.getElementById("sidebar-featured");
   var historyButton = document.getElementById("sidebar-history");
   var installedAppsButton = document.getElementById("sidebar-installed-apps");
   var settingsButton = document.getElementById("sidebar-settings");
+
+  uploadButton.onclick = () => {
+    openContentView("submit", true);
+  };
 
   allAppsButton.onclick = () => {
     var selected = document.querySelector('[aria-selected="true"]');
@@ -89,8 +112,8 @@
   };
 
   var isHistoryEnabled =
-    localStorage.getItem("ws.webstore.historyEnabled") == "true" || true;
-  if (isHistoryEnabled) {
+    (localStorage.getItem("ws.webstore.historyEnabled") == "true") || true;
+  if (!isHistoryEnabled) {
     historyButton.style.display = "none";
   }
   historyButton.onclick = () => {

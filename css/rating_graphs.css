@@ -19,11 +19,21 @@
 
 .rating-graphs li > .progress:before {
   content: '';
-  width: var(--progress);
+  width: 0;
   height: 2.4rem;
   border-radius: 1.2rem;
   background: var(--accent-color);
   position: absolute;
+  animation: graph-progress 1s cubic-bezier(0.2, 0.9, 0.1, 1) forwards 1s;
+}
+
+@keyframes graph-progress {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--progress);
+  }
 }
 
 .rating-graphs li > .users {
@@ -33,22 +43,34 @@
 }
 
 /* Accent Colors */
-.rating-graphs .graph-1 {
-  --accent-color: #40a060;
+html[dir="ltr"] .rating-graphs .graph-1 > .progress:before {
+  background: linear-gradient(to right, #00a0e8, #00ddff);
+}
+html[dir="ltr"] .rating-graphs .graph-2 > .progress:before {
+  background: linear-gradient(to right, #40a060, #60e080);
+}
+html[dir="ltr"] .rating-graphs .graph-3 > .progress:before {
+  background: linear-gradient(to right, #ffc000, #ffe080);
+}
+html[dir="ltr"] .rating-graphs .graph-4 > .progress:before {
+  background: linear-gradient(to right, #ff6040, #ffa060);
+}
+html[dir="ltr"] .rating-graphs .graph-5 > .progress:before {
+  background: linear-gradient(to right, #c00040, #ff4060);
 }
 
-.rating-graphs .graph-2 {
-  --accent-color: #60e080;
+html[dir="rtl"] .rating-graphs .graph-1 > .progress:before {
+  background: linear-gradient(to left, #00a0e8, #00ddff);
 }
-
-.rating-graphs .graph-3 {
-  --accent-color: #ffc000;
+html[dir="rtl"] .rating-graphs .graph-2 > .progress:before {
+  background: linear-gradient(to left, #40a060, #60e080);
 }
-
-.rating-graphs .graph-4 {
-  --accent-color: #ff6040;
+html[dir="rtl"] .rating-graphs .graph-3 > .progress:before {
+  background: linear-gradient(to left, #ffc000, #ffe080);
 }
-
-.rating-graphs .graph-5 {
-  --accent-color: #c00040;
+html[dir="rtl"] .rating-graphs .graph-4 > .progress:before {
+  background: linear-gradient(to left, #ff6040, #ffa060);
+}
+html[dir="rtl"] .rating-graphs .graph-5 > .progress:before {
+  background: linear-gradient(to left, #c00040, #ff4060);
 }

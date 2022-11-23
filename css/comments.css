@@ -8,7 +8,7 @@
   overflow: hidden;
 }
 
-.comments-wrapper > form {
+.comments-wrapper .comment-form {
   width: calc(100% - 1.6rem);
   height: 8.4rem;
   display: flex;
@@ -17,12 +17,12 @@
   margin: 0.8rem;
 }
 
-.comments-wrapper > form:focus-within {
+.comments-wrapper .comment-form:focus-within {
   box-shadow: inset 0 -0.1rem 0 var(--accent-color);
   border-bottom-color: var(--accent-color);
 }
 
-.comments-wrapper > form textarea {
+.comments-wrapper .comment-form textarea {
   width: 100%;
   height: 8.4rem;
   margin: 0;
@@ -40,7 +40,7 @@
   flex: 1;
 }
 
-.comments-wrapper > form button {
+.comments-wrapper .comment-form button {
   width: 4.5rem;
   height: 4rem;
   border: none;
@@ -51,23 +51,23 @@
   color: var(--text-color);
 }
 
-.comments-wrapper > form button:hover {
+.comments-wrapper .comment-form button:hover {
   background: var(--translucent);
 }
 
-.comments-wrapper > form button:active {
+.comments-wrapper .comment-form button:active {
   background: var(--translucent-plus);
 }
 
-.comments-wrapper > form button[data-icon]:before {
+.comments-wrapper .comment-form button[data-icon]:before {
   font-size: 2rem;
 }
 
 /* Comments */
 .comments-wrapper .expand-button {
   width: 100%;
-  height: 4rem;
-  line-height: 4rem;
+  height: 3rem;
+  line-height: 3rem;
   display: block;
   font-size: 1.6rem;
   color: var(--accent-color);
@@ -85,7 +85,7 @@
   opacity: 0.5;
 }
 
-.comments-wrapper .expand-button > span {
+.comments-wrapper .expand-button:hover > span {
   text-decoration: underline;
 }
 
@@ -106,13 +106,14 @@
   padding: 0 !important;
   box-shadow: none !important;
   border-radius: 0 !important;
+  overflow: hidden;
 }
 
 .comments-wrapper > ul:not(.expanded) li:not(:first-child) {
   display: none !important;
 }
 
-.comments-wrapper > ul li {
+.comments-wrapper ul li {
   width: 100% !important;
   margin: 0 !important;
   padding: 1rem !important;
@@ -122,7 +123,7 @@
   list-style: none;
 }
 
-.comments-wrapper > ul li:after {
+.comments-wrapper ul li:after {
   content: '';
   position: absolute;
   left: 1.5rem;
@@ -133,36 +134,46 @@
   pointer-events: none;
 }
 
-.comments-wrapper > ul li figure {
+.comments-wrapper ul li figure {
   width: 100%;
   height: 3rem;
   display: flex;
   margin: 0;
 }
 
-.comments-wrapper > ul li figure > img {
-  width: 3rem;
-  height: 3rem;
+.comments-wrapper ul li figure > img {
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
   background: #858585;
-  -moz-margin-end: 0.5rem;
-  margin-inline-end: 0.5rem;
+  -moz-margin-end: 1rem;
+  margin-inline-end: 1rem;
 }
 
-.comments-wrapper > ul li figure > figcaption {
-  width: 100%;
+.comments-wrapper ul li figure > figcaption {
+  max-width: 100%;
   height: 3rem;
   line-height: 3rem;
   flex: 1;
   font-size: 1.6rem;
+  font-weight: normal;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.comments-wrapper > ul li figure > figcaption.author {
+.comments-wrapper ul li figure > figcaption.verified:after {
+  content: 'tick-circle';
+  font-family: 'gaia-icons';
+  margin-inline-start: 0.5rem;
+  width: 1em;
+}
+
+.comments-wrapper ul li figure > figcaption.author {
   background: var(--text-color);
   color: var(--background-plus);
-  display: block;
-  padding: 0 0.6rem;
-  border-radius: 0.6rem;
+  padding: 0 0.5rem;
+  border-radius: 1.2rem;
   flex: 0;
   position: relative;
   height: 2.4rem;
@@ -170,44 +181,51 @@
   margin: 0.3rem 0;
 }
 
-.comments-wrapper > ul li .stars {
+.comments-wrapper ul li .stars {
   width: calc(100% - 3rem);
   height: 1.6rem;
   display: flex;
-  margin: 0.4rem 1.5rem 0;
+  margin: 0.5rem 5rem 0;
+  -moz-margin-end: 1rem;
+  margin-inline-end: 1rem;
 }
 
-.comments-wrapper > ul li .stars > .star {
+.comments-wrapper ul li .stars > .star {
   width: 1.6rem;
   height: 1.6rem;
   -moz-margin-end: 0.4rem;
   margin-inline-end: 0.4rem;
 }
 
-.comments-wrapper > ul li .stars > .star:before {
+.comments-wrapper ul li .stars > .star:before {
   content: 'bookmark';
   font-family: 'gaia-icons';
   font-size: 1.6rem;
 }
 
-.comments-wrapper > ul li .stars > .star.active:before {
+.comments-wrapper ul li .stars > .star.active:before {
   content: 'bookmarked';
 }
 
-.comments-wrapper > ul li p {
-  margin: 0.4rem 1.5rem 0;
+.comments-wrapper ul li p {
+  margin: 0.4rem 5rem 0;
+  -moz-margin-end: 1rem;
+  margin-inline-end: 1rem;
 }
 
-.comments-wrapper > ul li menu {
-  margin: 0.4rem 1.5rem 0;
+.comments-wrapper ul li menu {
+  margin: 0.4rem 4rem 0;
+  -moz-margin-end: 1rem;
+  margin-inline-end: 1rem;
   padding: 0;
   width: calc(100% - 3rem);
   display: flex;
 }
 
-.comments-wrapper > ul li menu button {
+.comments-wrapper ul li menu button {
   margin: 0;
-  padding: 0 1rem;
+  padding: 0 1rem !important;
+  width: unset;
   min-width: 4rem;
   height: 3rem;
   line-height: 3rem;
@@ -222,23 +240,74 @@
   justify-content: center;
 }
 
-.comments-wrapper > ul li menu button:hover {
-  background: var(--translucent);
+.comments-wrapper ul li menu button:hover {
+  background: var(--translucent) !important;
 }
 
-.comments-wrapper > ul li menu button:active {
-  background: var(--translucent-plus);
+.comments-wrapper ul li menu button:active {
+  background: var(--translucent-plus) !important;
 }
 
-.comments-wrapper > ul li menu button[disabled] {
+.comments-wrapper ul li menu button.recommend {
+  color: var(--accent-color);
+}
+
+.comments-wrapper ul li menu button[disabled] {
   opacity: 0.5;
   pointer-events: none;
 }
 
-.comments-wrapper > ul li menu button[data-icon]:before {
-  font-size: 1.6rem;
+.comments-wrapper ul li menu button[data-icon]:before {
+  font-size: 1.8rem;
+  margin: 0;
   -moz-margin-end: 0.5rem;
   margin-inline-end: 0.5rem;
+  width: unset;
+  position: relative;
+  top: unset;
+}
+
+.comments-wrapper ul li .comment-form {
+  margin: 0.4rem 4rem 0;
+  -moz-margin-end: 1rem;
+  margin-inline-end: 1rem;
+  width: calc(100% - 5rem);
+
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.1, 1);
+  opacity: 0;
+  margin-top: -8.4rem;
+  visibility: hidden;
+}
+
+.comments-wrapper ul li.reply-form-shown .comment-form {
+  opacity: 1;
+  margin-top: 0;
+  visibility: visible;
+}
+
+.comments-wrapper ul li > ul {
+  box-shadow: none !important;
+  margin: 0 4rem !important;
+  display: none;
+}
+
+.comments-wrapper ul li > ul.visible {
+  display: block;
+}
+
+.comments-wrapper ul li > ul li figure > img {
+  width: 3rem;
+  height: 3rem;
+}
+
+.comments-wrapper ul li > ul li p {
+  margin: 0.5rem 4rem 0;
+  margin-inline-end: 1rem;
+}
+
+.comments-wrapper ul li > ul li menu {
+  margin: 0.5rem 3rem 0;
+  margin-inline-end: 1rem;
 }
 
 .like-button.enabled[data-icon]:before {
@@ -300,17 +369,36 @@
   color: var(--text-color);
 }
 
-.comments-wrapper .star-rating input[type=number] {
-  font-size: 2rem;
-  font-weight: normal;
-  color: #ffc000;
-  background: var(--background);
-  height: 4rem;
-  line-height: 4rem;
-  width: 10rem;
-  border-radius: 1rem;
-  border: none;
-  text-align: center;
-  caret-color: transparent;
-  outline: none;
+.comments-wrapper .star-rating > form {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row-reverse;
+  margin-inline-end: auto;
+}
+
+.comments-wrapper .star-rating > form input[type="radio"] {
+  appearance: none;
+  -moz-appearance: none;
+  width: 3rem;
+  height: 3rem;
+  background: url(images/star.svg) no-repeat center / cover;
+  margin: 0;
+  margin-inline-end: 0.4rem;
+  padding: 0;
+}
+
+.comments-wrapper .star-rating > form input[type="radio"]:checked,
+.comments-wrapper .star-rating > form input[type="radio"]:checked ~ input[type="radio"] {
+  background-image: url(images/stared.svg);
+}
+
+/* Expand Chevron */
+.show-replies-button[data-icon]:before {
+  margin: 0 !important;
+  transition: all 0.5s cubic-bezier(0.2, 0.9, 0.1, 1);
+}
+
+.show-replies-button.active[data-icon]:before {
+  transform: rotate(180deg);
 }

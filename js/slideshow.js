@@ -3,7 +3,7 @@
 
   var slideshowList = [
     {
-      background: 'images/unified.png',
+      background: (document.dir === 'rtl' ? 'images/keyarts/poster_explore_rtl.png' : 'images/keyarts/poster_explore.png'),
       title: 'slideshow-store-title',
       detail: 'slideshow-store-detail',
       linkTo: '#'
@@ -16,7 +16,7 @@
       linkText: 'visit-website'
     },
     {
-      background: 'https://source.unsplash.com/random',
+      background: 'images/unsplash.jpeg',
       title: 'slideshow-unsplash-title',
       detail: 'slideshow-unsplash-detail',
       linkTo: 'https://www.unsplash.com/',
@@ -31,6 +31,8 @@
     }
   ];
 
+  var progress = 0;
+  var isPaused = false;
   var slideshowContainer = document.getElementById('slideshow');
   var slideshowPosters = slideshowContainer.querySelector('.holder');
   var backButton = slideshowContainer.querySelector('.controls .back');
@@ -46,7 +48,33 @@
     slideshowPosters.appendChild(element);
 
     var background = document.createElement('img');
-    background.src = slideshow.background;
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        background.src = slideshow.background;
+      }, 100);
+    });
+    background.onload = () => {
+      colorPicker(slideshow.background).then((colors) => {
+        element.style.setProperty('--color-primary', colors[0]);
+        dot.style.setProperty('--color-primary', colors[0]);
+
+        switch (lightOrDark(colors[0])) {
+          case 'light':
+            colorPicker(slideshow.background, { colors: 2, brightness: 0.25 }).then((colors) => {
+              element.style.setProperty('--color-secondary', colors[1]);
+              dot.style.setProperty('--color-secondary', colors[1]);
+            });
+            break;
+
+          case 'dark':
+            colorPicker(slideshow.background, { colors: 2, brightness: 1.75 }).then((colors) => {
+              element.style.setProperty('--color-secondary', colors[1]);
+              dot.style.setProperty('--color-secondary', colors[1]);
+            });
+            break;
+        }
+      });
+    };
     element.appendChild(background);
 
     var context = document.createElement('div');
@@ -74,12 +102,15 @@
       var link = document.createElement('a');
       link.href = slideshow.linkTo;
       link.target = '_blank';
-      if (slideshow.linkText) {
-        link.dataset.l10nId = slideshow.linkText;
-      } else {
-        link.dataset.l10nId = 'learn-more';
-      }
       context.appendChild(link);
+
+      var linkText = document.createElement('span');
+      if (slideshow.linkText) {
+        linkText.dataset.l10nId = slideshow.linkText;
+      } else {
+        linkText.dataset.l10nId = 'learn-more';
+      }
+      link.appendChild(linkText);
     }
 
     var dot = document.createElement('div');
@@ -105,28 +136,41 @@
   });
 
   setInterval(() => {
-    var selectedSlideshow = slideshowPosters.querySelector('.slideshow.current');
-    if (selectedSlideshow) {
-      selectedSlideshow.classList.remove('current');
-    }
+    progress = 0;
+    if (!isPaused) {
+      var selectedSlideshow = slideshowPosters.querySelector('.slideshow.current');
+      if (selectedSlideshow) {
+        selectedSlideshow.classList.remove('current');
+      }
 
-    var selectedDot = slideshowDots.querySelector('.dot.active');
-    if (selectedDot) {
-      selectedDot.classList.remove('active');
-    }
+      var selectedDot = slideshowDots.querySelector('.dot.active');
+      if (selectedDot) {
+        selectedDot.classList.remove('active');
+      }
 
-    if (selectedSlideshow.nextElementSibling) {
-      selectedSlideshow.nextElementSibling.classList.add('current');
-    } else {
-      slideshowPosters.children[0].classList.add('current');
-    }
+      if (selectedSlideshow.nextElementSibling) {
+        selectedSlideshow.nextElementSibling.classList.add('current');
+      } else {
+        slideshowPosters.children[0].classList.add('current');
+      }
 
-    if (selectedDot.nextElementSibling) {
-      selectedDot.nextElementSibling.classList.add('active');
-    } else {
-      slideshowDots.children[0].classList.add('active');
+      if (selectedDot.nextElementSibling) {
+        selectedDot.nextElementSibling.classList.add('active');
+      } else {
+        slideshowDots.children[0].classList.add('active');
+      }
     }
   }, 4000);
+
+  setInterval(() => {
+    progress += (1000 / 120);
+    if (!isPaused) {
+      var selectedDot = slideshowDots.querySelector('.dot.active');
+      if (selectedDot) {
+        selectedDot.style.setProperty('--progress', ((progress / 4000) * 200) + '%');
+      }
+    }
+  }, 1000 / 60);
 
   backButton.addEventListener('click', () => {
     var selectedSlideshow = slideshowPosters.querySelector('.slideshow.current');
@@ -174,5 +218,13 @@
     } else {
       slideshowDots.children[0].classList.add('active');
     }
+  });
+
+  slideshowContainer.addEventListener('mouseenter', () => {
+    isPaused = true;
+  });
+
+  slideshowContainer.addEventListener('mouseleave', () => {
+    isPaused = false;
   });
 })(window);

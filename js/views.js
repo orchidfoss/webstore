@@ -6,11 +6,6 @@
 
   exports.openContentView = function openContentView(id, highlight = true) {
     sidebar.classList.remove('visible');
-    if (id !== 'content' && id !== 'loading-screen') {
-      window.history.pushState({ html: "", pageTitle: "" }, "", "?page=" + id);
-    } else {
-      window.history.pushState({ html: "", pageTitle: "" }, "", "?");
-    }
 
     var element = document.getElementById(id);
     if (!element.classList.contains('visible')) {

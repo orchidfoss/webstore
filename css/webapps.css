@@ -39,6 +39,11 @@
   display: inline-block;
   padding-inline-end: 4rem;
   position: relative;
+  text-decoration: none;
+}
+
+.webapps-group header a:hover {
+  text-decoration: underline;
 }
 
 .webapps-group header a:active {
@@ -90,7 +95,7 @@ html[dir="rtl"] .webapps-group header a[data-icon]:before {
 }
 
 .webapps {
-  padding: 1rem 0;
+  padding: 0;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -129,7 +134,7 @@ html[dir="rtl"] .webapps-group header a[data-icon]:before {
   margin: 0 auto;
   display: block;
   border-radius: 25%;
-  background: #fff;
+  background: transparent;
   box-shadow: 0 0.2rem 0.4rem rgba(0,0,0,0.3);
 }
 
@@ -208,7 +213,7 @@ html[dir="rtl"] .webapp:hover > .context .title.marquee > span {
 .webapp > .context .categories {
   display: flex;
   overflow: hidden;
-  border-radius: 0.4rem;
+  border-radius: 1.1rem;
 }
 
 .webapp > .context .categories > span {
@@ -223,10 +228,10 @@ html[dir="rtl"] .webapp:hover > .context .title.marquee > span {
   overflow: hidden;
   height: 2.2rem;
   background: var(--background-plus);
-  border-radius: 0.4rem;
+  border-radius: 1.1rem;
   -moz-margin-end: 0.4rem;
   margin-inline-end: 0.4rem;
-  padding: 0 0.4rem;
+  padding: 0 0.6rem;
   box-sizing: border-box;
   flex: none;
 }
@@ -283,7 +288,7 @@ html[dir="rtl"] .webapp:hover > .context .title.marquee > span {
   padding: 1rem;
   box-sizing: border-box;
   background: var(--background-plus);
-  border-radius: 0 0 0.8rem 0.8rem;
+  border-radius: 1.5rem;
 
   transition: all 0.3s cubic-bezier(0.2, 0.9, 0.1, 1);
   transform: scale(0.9);
@@ -302,7 +307,7 @@ html[dir="rtl"] .webapp:hover > .context .title.marquee > span {
   height: 4rem;
   line-height: 4rem;
   font-size: 1.6rem;
-  background: var(--button-normal);
+  background: var(--button-background);
   color: var(--text-color);
   border: none;
   border-radius: 1rem;
@@ -310,11 +315,11 @@ html[dir="rtl"] .webapp:hover > .context .title.marquee > span {
 }
 
 .webapp > nav button:hover {
-  background: var(--button-hover);
+  background: var(--button-background-plus);
 }
 
 .webapp > nav button:active {
-  background: var(--button-active);
+  background: var(--button-background-minus);
 }
 
 /* List */
@@ -350,6 +355,7 @@ html[dir="rtl"] .webapp:hover > .context .title.marquee > span {
   background: #c00040;
   color: #fff;
   border: none;
+  padding: 0 !important;
 
   transition: all 0.2s ease;
   transform: scale(0.75);
@@ -365,6 +371,11 @@ html[dir="rtl"] .webapp:hover > .context .title.marquee > span {
 
 .webapp .mod-remove[data-icon]:before {
   font-size: 2rem;
+  width: unset;
+  height: 4rem;
+  line-height: 4rem;
+  margin: 0;
+  position: static;
 }
 
 @media screen and (min-width: 768px) {
@@ -394,8 +405,7 @@ html[dir="rtl"] .webapp:hover > .context .title.marquee > span {
   }
 
   .webapp:hover {
-    box-shadow: 0 1rem 2rem rgba(0,0,0,0.25);
-    transform: translateY(-0.2rem);
+    box-shadow: 0 1rem 2rem rgba(0,0,0,0.1);
   }
 
   .webapp > .context .title {
@@ -423,6 +433,7 @@ html[dir="rtl"] .webapp:hover > .context .title.marquee > span {
   .webapp {
     width: calc((100% - 6rem) / 6);
     max-width: unset;
+    border-radius: 1.5rem;
   }
 
   .webapp .icon-holder {
