@@ -4,7 +4,7 @@
   top: 0;
   width: 100vw;
   height: 100vh;
-  background: var(--background-plus, #fff) url(../icons/store.svg) no-repeat center / 10rem;
+  background: var(--background-plus, #fff) url(../icons/articles.svg) no-repeat center / 10rem;
   z-index: 1024;
 
   transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.1, 1) 1s, opacity 0.5s cubic-bezier(0.2, 0.9, 0.1, 1) 1s, visibility 0.5s 1s;
@@ -119,7 +119,6 @@
   border-radius: 2rem;
   height: 4rem;
   line-height: 4rem;
-  background: var(--button-normal);
   font-size: 1.6rem;
   font-weight: normal;
   white-space: nowrap;
@@ -130,7 +129,7 @@
 
 #offline-message .container menu button.recommend {
   background: var(--accent-color);
-  color: var(--accent-color-text);
+  color: var(--accent-text-color);
 }
 
 @media screen and (min-width: 600px) {

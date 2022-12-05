@@ -156,5 +156,3 @@
 
   window.TagsInput = TagsInput;
 })();
-
-tagInput1.addData(["PHP", "JavaScript", "CSS"]);

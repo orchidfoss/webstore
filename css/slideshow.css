@@ -228,6 +228,9 @@ html[dir="rtl"] .slideshow > div {
 }
 
 .slideshow > div a > span {
+  height: 1.6rem;
+  line-height: 1.6rem;
+  display: inline-block;
   transition: all 0.2s ease;
 }
 

@@ -65,18 +65,15 @@
   flex-direction: column;
   padding: 1rem;
   box-sizing: border-box;
-  position: sticky;
-  top: 0;
+  position: relative;
   z-index: 5;
   background: var(--background);
-  transition: all 0.5s cubic-bezier(0.2, 0.9, 0.1, 1);
 }
 
 #webapp .app-header.visible {
   box-shadow: 0 2rem 1rem -1rem rgba(0,0,0,0.1);
   height: 6rem;
   background: var(--background-plus);
-  padding: 1rem;
   flex-direction: row;
 }
 
@@ -546,8 +543,14 @@ html[dir="rtl"] #webapp-screenshots.start {
     display: flex;
   }
 
-  #webapp .content-col {
-    width: 50%;
+  #webapp .content-col:first-child {
+    flex: 1;
+    width: 100%;
+  }
+
+  #webapp .content-col:last-child {
+    width: 100%;
+    min-width: 32rem;
   }
 
   #webapp .app-header.visible {

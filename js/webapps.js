@@ -310,12 +310,16 @@
     window.history.pushState({ html: "", pageTitle: "" }, "", "?webapp=" + id);
     webapp.onscroll = () => {
       var oldHeight = webappHeader.getBoundingClientRect().height;
-      if (webapp.scrollTop >= webappBanner.parentElement.getBoundingClientRect().height) {
+      var startY = webappBanner.parentElement.getBoundingClientRect().height;
+      var scrolled = webapp.scrollTop >= startY;
+      if (scrolled) {
         webappHeader.classList.add('visible');
         webappHeader.style.marginBottom = oldHeight + 'px';
+        webappHeader.style.transform = 'translateY(' + ((webapp.scrollTop - startY) - 15) + 'px)';
       } else {
         webappHeader.classList.remove('visible');
         webappHeader.style.marginBottom = '';
+        webappHeader.style.transform = 'translateY(0px)';
       }
     };
 

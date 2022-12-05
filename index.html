@@ -39,7 +39,7 @@
   <link rel="stylesheet" href="css/webapps.css">
   <link rel="stylesheet" href="css/webapp_info.css">
   <link rel="stylesheet" href="css/comments.css">
-  <link rel="stylesheet" href="lib/orchid_ui/header.css">
+  <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/switches.css">
   <link rel="stylesheet" href="css/seekbars.css">
@@ -101,7 +101,7 @@
     </div>
   </div>
 
-  <header class="oui--header" id="header">
+  <header class="header" id="header">
     <a href="#" id="back-button" data-icon="back"></a>
     <a href="#" id="toggle-sidebar-button" data-icon="menu"></a>
     <a href="#" class="logo"></a>
@@ -119,6 +119,8 @@
     </a>
     <a href="#" id="options-button" data-icon="options"></a>
   </header>
+
+  <div class="dropdown"></div>
 
   <nav id="sidebar">
     <a href="#" id="upload-button" data-icon="add" data-l10n-id="nav-upload"></a>
@@ -414,29 +416,6 @@
               <div id="webapp-tags"></div>
             </li>
           </ul>
-        </div>
-
-        <div class="content-col">
-          <header data-l10n-id="webapp-info"></header>
-          <ul>
-            <li>
-              <span data-l10n-id="webapp-contacts"></span>
-              <div id="webapp-contacts" class="list"></div>
-            </li>
-            <li>
-              <span data-l10n-id="webapp-terms"></span>
-              <div id="webapp-terms" class="list"></div>
-            </li>
-            <li id="webapp-release-date" data-l10n-id="webapp-releaseDate"></li>
-            <li id="webapp-size" data-l10n-id="webapp-size"></li>
-            <li id="webapp-downloads" data-l10n-id="webapp-downloads"></li>
-            <li id="webapp-has-ads" data-l10n-id="webapp-hasAds"></li>
-            <li id="webapp-has-tracking" data-l10n-id="webapp-hasTracking"></li>
-            <li>
-              <span data-l10n-id="webapp-languages"></span>
-              <div id="webapp-languages"></div>
-            </li>
-          </ul>
 
           <header data-l10n-id="webapp-comments" id="webapp-comments-header"></header>
           <ul class="rating-graphs" id="webapp-rating-graphs">
@@ -490,6 +469,29 @@
             </a>
             <ul></ul>
           </div>
+        </div>
+
+        <div class="content-col">
+          <header data-l10n-id="webapp-info"></header>
+          <ul>
+            <li>
+              <span data-l10n-id="webapp-contacts"></span>
+              <div id="webapp-contacts" class="list"></div>
+            </li>
+            <li>
+              <span data-l10n-id="webapp-terms"></span>
+              <div id="webapp-terms" class="list"></div>
+            </li>
+            <li id="webapp-release-date" data-l10n-id="webapp-releaseDate"></li>
+            <li id="webapp-size" data-l10n-id="webapp-size"></li>
+            <li id="webapp-downloads" data-l10n-id="webapp-downloads"></li>
+            <li id="webapp-has-ads" data-l10n-id="webapp-hasAds"></li>
+            <li id="webapp-has-tracking" data-l10n-id="webapp-hasTracking"></li>
+            <li>
+              <span data-l10n-id="webapp-languages"></span>
+              <div id="webapp-languages"></div>
+            </li>
+          </ul>
         </div>
     </div>
   </div>

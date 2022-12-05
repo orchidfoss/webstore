@@ -319,15 +319,44 @@
 @keyframes comment-like {
   0% {
     transform: translateY(0) rotate(0deg) scale(1);
+    color: var(--text-color);
   }
   15% {
     transform: translateY(0.1rem) rotate(5deg) scale(0.9);
+    color: #0061e0;
   }
   60% {
     transform: translateY(-0.2rem) rotate(-10deg) scale(1.25);
+    color: #00ddff;
   }
   100% {
     transform: translateY(0) rotate(0deg) scale(1);
+    color: var(--text-color);
+  }
+}
+
+.like-button.enabled[data-icon]:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4rem;
+  height: 4rem;
+  margin-left: -2rem;
+  margin-top: -2rem;
+  border-radius: 2rem;
+  animation: comment-like-effect 1s cubic-bezier(0.2, 0.9, 0.1, 1) forwards;
+  background: radial-gradient(circle at 50% 50%, #00a0e8, transparent 80%);
+}
+
+@keyframes comment-like-effect {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(6);
+    opacity: 0;
   }
 }
 
@@ -343,19 +372,37 @@
   }
   15% {
     transform: translateY(-0.1rem) rotate(5deg) scale(0.9);
+    color: #a00030;
   }
   25% {
     transform: translateY(0.2rem) rotate(-10deg) scale(1.1);
+    color: #ff2060;
   }
   50% {
     transform: translateY(-0.1rem) rotate(5deg) scale(0.9);
+    color: #a00030;
   }
   75% {
     transform: translateY(0.2rem) rotate(-10deg) scale(1.25);
+    color: #ff4060;
   }
   100% {
     transform: translateY(0) rotate(0deg) scale(1);
   }
+}
+
+.dislike-button.enabled[data-icon]:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4rem;
+  height: 4rem;
+  margin-left: -2rem;
+  margin-top: -2rem;
+  border-radius: 2rem;
+  animation: comment-like-effect 1s cubic-bezier(0.2, 0.9, 0.1, 1) forwards;
+  background: radial-gradient(circle at 50% 50%, #c00040, transparent 80%);
 }
 
 .comments-wrapper .star-rating {
@@ -396,7 +443,7 @@
 /* Expand Chevron */
 .show-replies-button[data-icon]:before {
   margin: 0 !important;
-  transition: all 0.5s cubic-bezier(0.2, 0.9, 0.1, 1);
+  transition: all1cubic-bezier(0.2, 0.9, 0.1, 1);
 }
 
 .show-replies-button.active[data-icon]:before {

@@ -9,13 +9,6 @@
       linkTo: '#'
     },
     {
-      background: 'images/libremedia_bg.svg',
-      wordmark: 'images/libremedia_wordmark.svg',
-      detail: 'slideshow-libremedia-detail',
-      linkTo: 'https://sites.google.com/view/libremedia/home',
-      linkText: 'visit-website'
-    },
-    {
       background: 'images/unsplash.jpeg',
       title: 'slideshow-unsplash-title',
       detail: 'slideshow-unsplash-detail',
@@ -39,6 +32,8 @@
   var forwardButton = slideshowContainer.querySelector('.controls .forward');
   var slideshowDots = slideshowContainer.querySelector('.dots');
 
+  slideshowPosters.innerHTML = '';
+  slideshowDots.innerHTML = '';
   slideshowList.forEach((slideshow, index) => {
     var element = document.createElement('div');
     element.classList.add('slideshow');
