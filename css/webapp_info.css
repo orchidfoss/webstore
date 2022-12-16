@@ -71,7 +71,7 @@
 }
 
 #webapp .app-header.visible {
-  box-shadow: 0 2rem 1rem -1rem rgba(0,0,0,0.1);
+  box-shadow: 0 0.9rem 0.6rem -0.6rem rgba(0,0,0,0.1);
   height: 6rem;
   background: var(--background-plus);
   flex-direction: row;
@@ -108,14 +108,11 @@
 
 #webapp-name {
   font-size: 2rem;
-  font-variation-settings: 'wght' 300;
-  font-family: 'Readex Pro', 'IBM Plex Sans Arabic', 'Noto Sans', 'Noto Naskh Arabic', system-ui;
-  transition: all 0.5s cubic-bezier(0.2, 0.9, 0.1, 1);
 }
 
 .app-header.visible #webapp-name {
   font-size: 1.6rem;
-  font-variation-settings: 'wght' 700;
+  line-height: 2.2rem;
 }
 
 #webapp-author {
@@ -212,7 +209,6 @@
 
 #webapp .app-header .options button {
   border: none;
-  background: var(--background-plus);
   border-radius: 2rem;
   padding: 0 3rem;
   box-sizing: border-box;
@@ -225,16 +221,7 @@
   margin: 0 0.5rem 1rem;
 }
 
-#webapp .app-header .options button:hover {
-  background: var(--button-background-plus);
-}
-
-#webapp .app-header .options button:active {
-  background: var(--button-background-minus);
-}
-
 #webapp .app-header .options button.recommend {
-  background: var(--accent-color);
   color: var(--accent-text-color);
 }
 
@@ -544,18 +531,20 @@ html[dir="rtl"] #webapp-screenshots.start {
   }
 
   #webapp .content-col:first-child {
-    flex: 1;
+    flex: 2.5;
     width: 100%;
   }
 
   #webapp .content-col:last-child {
     width: 100%;
     min-width: 32rem;
+    flex: 1;
   }
 
   #webapp .app-header.visible {
     background: var(--background);
     border-top: solid 0.1rem rgba(0,0,0,0.125);
+    border-bottom: solid 0.1rem var(--background-plus);
   }
 
   #webapp .app-header .app-header-info img {

@@ -46,29 +46,31 @@
     window.addEventListener('load', () => {
       setTimeout(() => {
         background.src = slideshow.background;
-      }, 100);
+      }, 500);
     });
     background.onload = () => {
-      colorPicker(slideshow.background).then((colors) => {
-        element.style.setProperty('--color-primary', colors[0]);
-        dot.style.setProperty('--color-primary', colors[0]);
+      setTimeout(() => {
+        colorPicker(slideshow.background, { colors: 2 }).then((colors) => {
+          element.style.setProperty('--color-primary', colors[0]);
+          dot.style.setProperty('--color-primary', colors[0]);
 
-        switch (lightOrDark(colors[0])) {
-          case 'light':
-            colorPicker(slideshow.background, { colors: 2, brightness: 0.25 }).then((colors) => {
-              element.style.setProperty('--color-secondary', colors[1]);
-              dot.style.setProperty('--color-secondary', colors[1]);
-            });
-            break;
+          switch (lightOrDark(colors[0])) {
+            case 'light':
+              colorPicker(slideshow.background, { colors: 2, brightness: 0.25 }).then((colors) => {
+                element.style.setProperty('--color-secondary', colors[1]);
+                dot.style.setProperty('--color-secondary', colors[1]);
+              });
+              break;
 
-          case 'dark':
-            colorPicker(slideshow.background, { colors: 2, brightness: 1.75 }).then((colors) => {
-              element.style.setProperty('--color-secondary', colors[1]);
-              dot.style.setProperty('--color-secondary', colors[1]);
-            });
-            break;
-        }
-      });
+            case 'dark':
+              colorPicker(slideshow.background, { colors: 2, brightness: 1.75 }).then((colors) => {
+                element.style.setProperty('--color-secondary', colors[1]);
+                dot.style.setProperty('--color-secondary', colors[1]);
+              });
+              break;
+          }
+        });
+      }, 500);
     };
     element.appendChild(background);
 

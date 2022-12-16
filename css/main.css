@@ -1,17 +1,12 @@
 @font-face {
-  font-family: 'Readex Pro';
-  src: url(../fonts/Readex_Pro/ReadexPro-VariableFont_wght.ttf);
+  font-family: 'Jali';
+  src: url(/fonts/Jali_Arabic_Regular.ttf);
 }
 
 @font-face {
-  font-family: 'IBM Plex Sans Arabic';
-  src: url(../fonts/IBMPlexSansArabic-Regular.ttf);
-}
-
-@font-face {
-  font-family: 'IBM Plex Sans Arabic';
+  font-family: 'Jali';
+  src: url(/fonts/Jali_Arabic_Bold.ttf);
   font-weight: bold;
-  src: url(../fonts/IBMPlexSansArabic-Bold.ttf);
 }
 
 :root {
@@ -78,9 +73,10 @@
   /** Button
    ---------------------------------------------------------*/
 
-  --button-background: #fff;
-  --button-background-plus: #d8dadd;
-  --button-background-minus: #c8cacd;
+  --button-background: linear-gradient(to bottom, #fff, #f4f4f4);
+  --button-background-plus: linear-gradient(to bottom, #d8dadd, #ccced2);
+  --button-background-minus: linear-gradient(to bottom, #bcbec2, #c8cacd);
+  --button-background-list: linear-gradient(to bottom, #e7e9ec, #dbddf0);
 
   /** Links
    ---------------------------------------------------------*/
@@ -150,8 +146,6 @@
     inset -0.3rem -0.3rem 0.1rem #d0d2d5;
 
   --backdrop-color: rgba(231, 233, 236, 0.5);
-
-  color-scheme: light;
 }
 
 [data-theme="dark"] {
@@ -218,9 +212,10 @@
   /** Button
    ---------------------------------------------------------*/
 
-  --button-background: #303234;
-  --button-background-plus: #383a3c;
-  --button-background-minus: #404244;
+  --button-background: linear-gradient(to bottom, #303234, #2c2e30);
+  --button-background-plus: linear-gradient(to bottom, #383a3c, #343638);
+  --button-background-minus: linear-gradient(to bottom, #3c3e40, #404244);
+  --button-background-list: linear-gradient(to bottom, #181a1c, #101214);
 
   /** Links
    ---------------------------------------------------------*/
@@ -290,8 +285,6 @@
     inset -0.3rem -0.3rem 0.1rem #212325;
 
   --backdrop-color: rgba(16, 18, 20, 0.5);
-
-  color-scheme: dark;
 }
 
 :focus-visible {
@@ -306,7 +299,7 @@
   line-height: 4rem;
   font-size: 1.6rem;
   font-weight: normal;
-  font-family: 'IBM Plex Sans Arabic', 'Noto Sans', 'Noto Naskh Arabic', system-ui;
+  font-family: 'Jali', system-ui, sans-serif;
   border: none;
   background: var(--button-background);
 }
@@ -327,9 +320,10 @@ html, body {
   margin: 0;
   padding: 0;
   font-size: 10px;
-  font-family: 'IBM Plex Sans Arabic', 'Noto Sans', 'Noto Naskh Arabic', system-ui;
-  background: var(--background);
+  font-family: 'Jali', system-ui, sans-serif;
+  background: var(--background-panel);
   scroll-behavior: smooth;
+  color-scheme: light dark;
 }
 
 body {
@@ -341,8 +335,9 @@ body {
   overflow: hidden;
 }
 
-button, input, select {
-  font-family: 'IBM Plex Sans Arabic', 'Noto Sans', 'Noto Naskh Arabic', system-ui;
+*,
+::placeholder {
+  font-family: 'Jali', system-ui, sans-serif;
   font-size: 1.6rem;
 }
 
@@ -372,6 +367,11 @@ button, input, select {
   width: 1rem;
 }
 
+html[dir="rtl"] .scrollbar-track-y {
+  right: unset !important;
+  left: 0 !important;
+}
+
 .scrollbar-track-y:hover {
   width: 1.6rem;
 }
@@ -393,7 +393,7 @@ button, input, select {
   width: 100% !important;
 }
 
-.oui--header {
+.header {
   position: fixed;
   top: 0;
   z-index: 10;
@@ -403,7 +403,7 @@ button, input, select {
   position: fixed;
   top: 5rem;
   width: 320px;
-  padding: 0.5rem 1.5rem;
+  padding: 1.5rem 1.5rem;
   box-sizing: border-box;
   margin: 0;
   height: calc(100% - 5rem);
@@ -426,6 +426,10 @@ button, input, select {
 #sidebar > ul {
   margin: 0;
   padding: 0;
+  background: var(--background-plus);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
 }
 
 #sidebar > ul li {
@@ -436,9 +440,8 @@ button, input, select {
 
 #sidebar > ul li a {
   width: 100%;
-  height: 4rem;
-  line-height: 4rem;
-  border-radius: 0.8rem;
+  height: 4.8rem;
+  line-height: 4.8rem;
   display: block;
   padding: 0 1.5rem;
   box-sizing: border-box;
@@ -446,7 +449,7 @@ button, input, select {
   color: var(--text-color);
   font-size: 1.6rem;
   font-weight: normal;
-  transition: box-shadow 0.2s ease;
+  position: relative;
 }
 
 #sidebar > ul li a:hover {
@@ -457,20 +460,34 @@ button, input, select {
   background: var(--translucent-plus);
 }
 
+#sidebar > ul li a:after {
+  content: '';
+  position: absolute;
+  left: 1.5rem;
+  top: 0;
+  width: calc(100% - 3rem);
+  height: 100%;
+  border-bottom: solid 0.1rem rgba(0,0,0,0.125);
+}
+
 #sidebar > ul li a[aria-selected="true"] {
-  background: var(--background-plus);
-  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+  background: var(--translucent);
+  color: var(--accent-color);
   font-weight: bold;
 }
 
 #sidebar > ul li a[aria-selected="true"]:hover {
-  box-shadow: 0 1rem 2rem rgba(0,0,0,0.1);
+  background: var(--translucent-plus);
+}
+
+#sidebar > ul li a[aria-selected="true"]:active {
+  background: var(--translucent-minus);
 }
 
 #sidebar > ul li a[data-icon] {
   position: relative;
-  -moz-padding-start: 4rem;
-  padding-inline-start: 4rem;
+  -moz-padding-start: 4.8rem;
+  padding-inline-start: 4.8rem;
 }
 
 #sidebar > ul li a[data-icon]:before {
@@ -478,7 +495,7 @@ button, input, select {
   top: 0;
   height: 100%;
   font-size: 2rem;
-  margin: 0 1rem;
+  margin: 0 1.4rem;
 }
 html[dir="ltr"] #sidebar > ul li a[data-icon]:before {
   left: 0;
@@ -489,7 +506,7 @@ html[dir="rtl"] #sidebar > ul li a[data-icon]:before {
 
 #sidebar > ul li a > em {
   position: absolute;
-  top: 0.8rem;
+  top: 1.2rem;
   height: 2.4rem;
   line-height: 2.4rem;
   font-size: 1.6rem;
@@ -555,12 +572,12 @@ html[dir="rtl"] .content {
 }
 
 #upload-button {
-  background: var(--accent-color);
-  color: var(--accent-text-color);
+  background: var(--neumorphic-button-background);
+  color: var(--text-color);
   min-width: 5rem;
   height: 5rem;
   line-height: 5rem;
-  border-radius: 1.25rem;
+  border-radius: 2.5rem;
   display: inline-flex;
   padding: 0 1.5rem;
   box-sizing: border-box;
@@ -568,12 +585,17 @@ html[dir="rtl"] .content {
   font-size: 1.6rem;
   font-weight: normal;
   align-items: center;
-  margin: 0 0 1rem;
-  transition: box-shadow 0.2s ease;
+  margin: 0 0 1.5rem;
+  box-shadow: var(--neumorphic-button-shadow);
 }
 
 #upload-button:hover {
-  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.2), 0 0.2rem 0.3rem rgba(0,0,0,0.3);
+  background: var(--background);
+  box-shadow: var(--neumorphic-shadow);
+}
+
+#upload-button:active {
+  box-shadow: var(--neumorphic-shadow-inner);
 }
 
 #upload-button[data-icon]:before {

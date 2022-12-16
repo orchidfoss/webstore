@@ -196,7 +196,6 @@ html[dir="rtl"] .slideshow > div {
 .slideshow > div h1 {
   font-size: 3rem;
   font-weight: normal;
-  font-family: 'Readex Pro', 'IBM Plex Sans Arabic', 'Noto Sans', 'Noto Naskh Arabic', system-ui;
   margin: 0;
   max-width: 400px;
 }

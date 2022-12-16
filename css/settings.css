@@ -8,7 +8,6 @@
   position: sticky;
   top: 0;
   color: var(--text-color);
-  background: var(--background);
   width: calc(100% - 3rem);
   max-width: 768px;
   display: block;

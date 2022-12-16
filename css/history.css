@@ -153,8 +153,9 @@ html[dir="rtl"] #history .container:nth-child(2n)::after {
 
 #history .timeline-content > .context h1 {
   margin: 0;
+  font-family: 'Readex Pro', 'IBM Plex Sans Arabic', 'Noto Sans', 'Noto Naskh Arabic', system-ui;
   font-size: 2rem;
-  font-weight: bold;
+  font-weight: 500;
   color: var(--text-color);
   white-space: nowrap;
   text-overflow: ellipsis;

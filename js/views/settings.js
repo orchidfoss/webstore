@@ -6,6 +6,7 @@
   var root = document.querySelector(':root');
 
   var profile = document.getElementById("settings-profile");
+  var profileButton = profile.querySelector("li");
   var profileAvatar = document.getElementById("settings-profile-avatar");
   var profileUsername = document.getElementById("settings-profile-username");
   var profileEmail = document.getElementById("settings-profile-email");
@@ -26,6 +27,10 @@
           }
         }
       );
+
+      profileButton.addEventListener('click', () => {
+        location.href = '/profile/?user_id=' + OrchidServices.userId();
+      });
     } else {
       profile.style.display = "none";
     }

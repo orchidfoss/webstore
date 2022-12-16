@@ -33,7 +33,6 @@
   line-height: 2.2rem;
   font-size: 1.6rem;
   font-weight: normal;
-  font-family: 'IBM Plex Sans Arabic', sans-serif;
   resize: none;
   outline: none;
   color: var(--text-color);
@@ -335,20 +334,6 @@
   }
 }
 
-.like-button.enabled[data-icon]:after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 4rem;
-  height: 4rem;
-  margin-left: -2rem;
-  margin-top: -2rem;
-  border-radius: 2rem;
-  animation: comment-like-effect 1s cubic-bezier(0.2, 0.9, 0.1, 1) forwards;
-  background: radial-gradient(circle at 50% 50%, #00a0e8, transparent 80%);
-}
-
 @keyframes comment-like-effect {
   0% {
     transform: scale(0);
@@ -389,20 +374,6 @@
   100% {
     transform: translateY(0) rotate(0deg) scale(1);
   }
-}
-
-.dislike-button.enabled[data-icon]:after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 4rem;
-  height: 4rem;
-  margin-left: -2rem;
-  margin-top: -2rem;
-  border-radius: 2rem;
-  animation: comment-like-effect 1s cubic-bezier(0.2, 0.9, 0.1, 1) forwards;
-  background: radial-gradient(circle at 50% 50%, #c00040, transparent 80%);
 }
 
 .comments-wrapper .star-rating {

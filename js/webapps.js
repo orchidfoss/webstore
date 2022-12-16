@@ -517,12 +517,14 @@
       "images/rating/" + data.age_rating + ".svg";
     webappAgeRating.children[1].dataset.l10nId = "ageRating-" + data.age_rating;
 
-    webappSize.dataset.l10nArgs =
-      '{"n": "' +
-      (data.download.length / 1024 / 1024).toFixed(2) +
-      navigator.mozL10n.get("megabyte") +
-      '"}';
-    webappDownloads.dataset.l10nArgs = '{"n": "' + data.downloads.length + '"}';
+    if (data.download) {
+      webappSize.dataset.l10nArgs =
+        '{"n": "' +
+        (data.download.length / 1024 / 1024).toFixed(2) +
+        navigator.mozL10n.get("megabyte") +
+        '"}';
+    }
+    webappDownloads.dataset.l10nArgs = '{"n": "' + (data.downloads.length || 0) + '"}';
     webappHasAds.dataset.l10nArgs =
       '{"n": "' +
       (data.has_ads

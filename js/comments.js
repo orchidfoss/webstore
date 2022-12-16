@@ -320,6 +320,7 @@ function Comments(path, element, hasStars = false) {
 
   form.onsubmit = (evt) => {
     evt.preventDefault();
+    var starred = starRatingForm.querySelector('input[type="radio"]:checked');
     OrchidServices.get(path).then((data) => {
       if (hasStars) {
         data.comments.push({
@@ -328,7 +329,7 @@ function Comments(path, element, hasStars = false) {
           likes: [],
           dislikes: [],
           replies: [],
-          rating: (starRatingForm.querySelector('input[type="radio"]:checked').value / 5)
+          rating: (starRatingForm.indexOf(starred) / 5)
         });
       } else {
         data.comments.push({

@@ -169,13 +169,13 @@
           <input type="text" name="" id="submit-tags">
         </li>
         <li class="active">
-          <label class="pack-switch reverse">
+          <label class="pack-checkbox reverse">
             <input type="checkbox" id="submit-has-ads">
             <span data-l10n-id="submit-hasAds"></span>
           </label>
         </li>
         <li class="active">
-          <label class="pack-switch reverse">
+          <label class="pack-checkbox reverse">
             <input type="checkbox" id="submit-has-tracking">
             <span data-l10n-id="submit-hasTracking"></span>
           </label>
@@ -210,7 +210,7 @@
           <span data-l10n-id="use-store-app"></span>
         </div>
       </div>
-      <a href="app://webstore.gaiamobile.org/index.html" target="_blank" data-l10n-id="open-store"></a>
+      <a href="http://webstore.localhost:8081/index.html" target="_blank" data-l10n-id="open-store"></a>
     </div>
 
     <div class="slideshow-container" id="slideshow">
@@ -285,12 +285,15 @@
         <li class="active">
           <label class="pack-checkbox reverse">
             <input type="checkbox" id="settings-auto-update">
-            <span data-l10n-id="settings-autoUpdate"></span>
+            <span class="vbox">
+              <span data-l10n-id="settings-autoUpdate"></span>
+              <p data-l10n-id="settings-autoUpdate-detail"></p>
+            </span>
           </label>
         </li>
         <li>
           <label class="vbox">
-            <p data-l10n-id="settings-language"></p>
+            <span data-l10n-id="settings-language"></span>
             <select name="" id="settings-languages"></select>
           </label>
         </li>

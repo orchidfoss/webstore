@@ -469,6 +469,57 @@ var OrchidServices = {
       });
     },
 
+    _storeTest: function os__storeTest() {
+      var categories = [
+        'communication',
+        'education',
+        'games',
+        'health',
+        'multimedia',
+        'news',
+        'search',
+        'social',
+        'travel',
+        'utility',
+        'langpack',
+        'addons',
+        'miscellaneous'
+      ];
+
+      categories.forEach((category) => {
+        OrchidServices.custom.createStoreApp({
+          teaser_url: '',
+          icon: '/images/profile_pictures/avatar_default.svg',
+          name: `Category Test (${category})`,
+          description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit aliquet neque, a pulvinar ante gravida in. Integer consequat et neque nec ultricies. Nunc iaculis aliquam arcu, ac ornare ante auctor eget. Sed orci augue, vestibulum at nisl sit amet, volutpat blandit elit. Vestibulum nec tortor leo. Morbi elementum nisl ut erat dapibus fermentum. Mauris sollicitudin elit id ultrices lacinia. Integer vitae velit eu nunc convallis porta ultrices sed quam. Nunc facilisis lacinia nibh eu dictum. Donec ipsum tortor, bibendum at scelerisque ut, venenatis eu sapien. Sed vulputate non nisi quis facilisis. Vivamus tortor magna, elementum feugiat nunc at, vulputate porttitor lorem. In euismod fermentum mattis. Proin pellentesque pellentesque diam vitae tempor. Nunc sodales mi eu risus vehicula finibus. Curabitur iaculis lacus a elit pharetra, et cursus est varius.
+
+          Vivamus sed nulla efficitur, ornare enim et, pharetra ex. Quisque ex dolor, viverra congue laoreet elementum, tempor et augue. Donec interdum lorem nec blandit efficitur. In ultricies justo at erat lobortis blandit. Nulla eget condimentum ante. Vestibulum quis condimentum est, vel dapibus arcu. Donec eleifend, odio in feugiat bibendum, ipsum nunc cursus mi, a condimentum tortor magna at mauris. Aenean mollis, sapien sit amet tempor lacinia, orci arcu bibendum lorem, vitae eleifend mauris tellus et nunc. Praesent id lorem nec dolor consectetur ullamcorper. Quisque cursus tincidunt ipsum, at finibus eros ultrices a.
+
+          Duis porttitor risus et nulla tincidunt porttitor. Sed dictum, urna nec maximus semper, urna felis pharetra tellus, eget venenatis dui ante vel ante. Proin malesuada felis quis lectus fermentum, sed vulputate erat egestas. Integer sodales commodo mattis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque rutrum viverra ornare. Suspendisse malesuada ante eu odio gravida cursus non et mauris. Integer nisl nisl, eleifend sit amet dictum id, varius quis leo. Cras molestie risus non diam tempor fringilla.
+
+          Cras tempor nisi id lacinia imperdiet. Curabitur imperdiet interdum congue. Aenean sapien felis, facilisis ut congue in, mollis et urna. Morbi aliquet leo nulla, in pulvinar libero interdum id. In hac habitasse platea dictumst. Aenean porta consequat arcu vitae interdum. Pellentesque eget nunc sed sapien rhoncus finibus sit amet vitae elit. Cras tellus nisi, cursus eu nisl in, finibus egestas orci. Vivamus nec lorem mi. Duis sem mi, volutpat vulputate bibendum nec, ultricies sit amet lectus. Donec sodales tempus porta. Quisque elit diam, aliquam tincidunt sodales eget, fermentum eu sem. Sed in tellus quis eros pharetra fringilla sit amet at augue. Mauris id vestibulum enim. Aliquam varius quam ut neque accumsan luctus. Nullam mattis ex nisl, in molestie dolor viverra sed.
+
+          Nullam porttitor nunc id sagittis tristique. Etiam sollicitudin risus pulvinar dolor varius, at efficitur urna facilisis. Vestibulum bibendum commodo tortor, vel suscipit nibh consequat ac. Suspendisse consectetur nibh nibh, in vulputate magna vulputate ac. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam risus justo, convallis nec consequat in, pulvinar eu sapien. Vivamus feugiat quam sed gravida varius. Duis ut dui est. Proin iaculis metus at purus dapibus lobortis. Nulla laoreet eget ipsum ut accumsan. Curabitur sed nunc diam. Suspendisse id est dui. Curabitur convallis scelerisque sodales. `,
+          screenshots: [],
+          download: '',
+          has_ads: false,
+          has_tracking: true,
+          categories: [ category ],
+          tags: [
+            'mort',
+            'mortcodesweb',
+            'testing',
+            'dev',
+            'webstore',
+            'database',
+            'data'
+          ],
+          age_rating: 'e',
+          price: 15.99
+        });
+      });
+    },
+
     publishArticle: async function os_publishArticle(title, markdown) {
       var id = OrchidServices._generateUUID();
       OrchidServices.set('articles/' + id, {
