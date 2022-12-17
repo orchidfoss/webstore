@@ -4,11 +4,10 @@
   background: var(--background-plus);
   border-radius: 1.5rem;
   box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
-  margin-inline-end: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1rem;
+  margin: 1rem auto;
 }
 
 .warning .message {
@@ -74,6 +73,5 @@
 @media screen and (min-width: 1280px) {
   .warning {
     width: calc(100% - 3rem);
-    margin: 1rem 1.5rem;
   }
 }

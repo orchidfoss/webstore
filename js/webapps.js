@@ -513,8 +513,7 @@
       webappPricing.dataset.l10nArgs = '{"n": "' + data.price + '"}';
     }
 
-    webappAgeRating.children[0].src =
-      "images/rating/" + data.age_rating + ".svg";
+    webappAgeRating.children[0].textContent = data.age_rating;
     webappAgeRating.children[1].dataset.l10nId = "ageRating-" + data.age_rating;
 
     if (data.download) {

@@ -2,6 +2,7 @@
   position: relative;
   width: 100%;
   max-width: 1054px;
+  margin: 0 auto;
   border-top: solid 1rem rgba(0,0,0,0.125);
 }
 
@@ -111,6 +112,7 @@ html[dir="rtl"] .webapps-group header a[data-icon]:before {
   flex-direction: column;
   color: var(--text-color);
   position: relative;
+  overflow: hidden;
 }
 
 .webapp:hover {
@@ -288,17 +290,15 @@ html[dir="rtl"] .webapp:hover > .context .title.marquee > span {
   padding: 1rem;
   box-sizing: border-box;
   background: var(--background-plus);
-  border-radius: 0 0 1rem 1rem;
+  border-radius: 1.5rem;
 
-  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.1, 1);
-  transform: scale(0.9);
-  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.1, 1.2);
+  transform: translateY(100%);
   visibility: hidden;
 }
 
 .webapp:hover > nav {
-  transform: scale(1);
-  opacity: 1;
+  transform: translateY(0);
   visibility: visible;
 }
 
@@ -378,11 +378,6 @@ html[dir="rtl"] .webapp:hover > .context .title.marquee > span {
 }
 
 @media screen and (min-width: 768px) {
-  .webapp .mod-remove {
-    left: -2rem;
-    top: -2rem;
-  }
-
   .webapps-group {
     border-top: solid 0.1rem rgba(0,0,0,0.125);
   }
@@ -395,7 +390,7 @@ html[dir="rtl"] .webapp:hover > .context .title.marquee > span {
 
   .webapp {
     width: 11.425rem;
-    border-radius: 1rem;
+    border-radius: 1.5rem;
     background: var(--background-plus) !important;
     box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
     border: none;

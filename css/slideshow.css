@@ -57,19 +57,19 @@
   left: 0;
   top: calc(100% + 1rem);
   width: 100%;
-  height: 1rem;
+  height: 1.5rem;
   display: flex;
   justify-content: center;
 }
 
 .slideshow-container .dots .dot {
-  width: 1rem;
-  height: 1rem;
-  border-radius: 1rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 1.5rem;
   box-sizing: border-box;
   background: #858585;
   margin-inline-end: 0.5rem;
-  transition: all 0.3s ease;
+  transition: width 0.3s cubic-bezier(0.2, 0.9, 0.1, 1);
 }
 
 .slideshow-container .dots .dot:hover {
@@ -81,11 +81,12 @@
 }
 
 .slideshow-container .dots .dot.active {
+  transition: width 0.3s cubic-bezier(0.2, 0.9, 0.1, 1.5);
   opacity: 1;
   width: 5rem;
   position: relative;
   overflow: hidden;
-  background: var(--color-primary, var(--text-color));
+  background: var(--color-primary, var(--text-color)) linear-gradient(0deg, var(--translucent-plus), var(--translucent-plus));
 }
 
 .slideshow-container .dots .dot.active::before {
@@ -265,7 +266,7 @@ html[dir="rtl"] .slideshow > div a:hover:after {
   .slideshow-container {
     width: calc(100% - 2rem);
     max-width: 1024px;
-    margin: 0.5rem 1rem 3.5rem;
+    margin: 0.5rem auto 4rem;
     aspect-ratio: 2 / 1;
   }
 
@@ -287,7 +288,6 @@ html[dir="rtl"] .slideshow > div a:hover:after {
 @media screen and (orientation: landscape) and (min-width: 1280px) {
   .slideshow-container {
     width: calc(100% - 3rem);
-    margin: 0.5rem 1.5rem 4rem;
     aspect-ratio: 2 / 1;
   }
 
@@ -316,7 +316,6 @@ html[dir="rtl"] .slideshow > div a:hover:after {
     box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
   }
 
-  /* -186 -61 -312 -151 -63 -347 */
   .slideshow > div {
     padding: 64px;
   }

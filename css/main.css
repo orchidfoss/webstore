@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'Jali';
-  src: url(/fonts/Jali_Arabic_Regular.ttf);
+  src: url(../fonts/Jali_Arabic_Regular.ttf);
 }
 
 @font-face {
   font-family: 'Jali';
-  src: url(/fonts/Jali_Arabic_Bold.ttf);
+  src: url(../fonts/Jali_Arabic_Bold.ttf);
   font-weight: bold;
 }
 
@@ -403,7 +403,7 @@ html[dir="rtl"] .scrollbar-track-y {
   position: fixed;
   top: 5rem;
   width: 320px;
-  padding: 1.5rem 1.5rem;
+  padding: 1rem 1.5rem;
   box-sizing: border-box;
   margin: 0;
   height: calc(100% - 5rem);
@@ -411,7 +411,7 @@ html[dir="rtl"] .scrollbar-track-y {
   overflow-y: auto;
 }
 
-#sidebar > header {
+#sidebar header {
   font-size: 1.6rem;
   font-weight: bold;
   color: var(--accent-color);
@@ -423,7 +423,7 @@ html[dir="rtl"] .scrollbar-track-y {
   margin: 1rem 0 0;
 }
 
-#sidebar > ul {
+#sidebar ul {
   margin: 0;
   padding: 0.5rem;
   background: var(--background-plus);
@@ -432,13 +432,13 @@ html[dir="rtl"] .scrollbar-track-y {
   box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
 }
 
-#sidebar > ul li {
+#sidebar ul li {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-#sidebar > ul li a {
+#sidebar ul li a {
   width: 100%;
   height: 4.8rem;
   line-height: 4.8rem;
@@ -453,15 +453,15 @@ html[dir="rtl"] .scrollbar-track-y {
   border-radius: 1rem;
 }
 
-#sidebar > ul li a:hover {
+#sidebar ul li a:hover {
   background: var(--translucent);
 }
 
-#sidebar > ul li a:active {
+#sidebar ul li a:active {
   background: var(--translucent-plus);
 }
 
-#sidebar > ul li a:after {
+#sidebar ul li a:after {
   content: '';
   position: absolute;
   left: 1.5rem;
@@ -471,45 +471,45 @@ html[dir="rtl"] .scrollbar-track-y {
   border-bottom: solid 0.1rem rgba(0,0,0,0.125);
 }
 
-#sidebar > ul li:last-child a:after {
+#sidebar ul li:last-child a:after {
   display: none;
 }
 
-#sidebar > ul li a[aria-selected="true"] {
+#sidebar ul li a[aria-selected="true"] {
   background: var(--translucent);
   color: var(--accent-color);
   font-weight: bold;
 }
 
-#sidebar > ul li a[aria-selected="true"]:hover {
+#sidebar ul li a[aria-selected="true"]:hover {
   background: var(--translucent-plus);
 }
 
-#sidebar > ul li a[aria-selected="true"]:active {
+#sidebar ul li a[aria-selected="true"]:active {
   background: var(--translucent-minus);
 }
 
-#sidebar > ul li a[data-icon] {
+#sidebar ul li a[data-icon] {
   position: relative;
   -moz-padding-start: 4.8rem;
   padding-inline-start: 4.8rem;
 }
 
-#sidebar > ul li a[data-icon]:before {
+#sidebar ul li a[data-icon]:before {
   position: absolute;
   top: 0;
   height: 100%;
   font-size: 2rem;
   margin: 0 1.4rem;
 }
-html[dir="ltr"] #sidebar > ul li a[data-icon]:before {
+html[dir="ltr"] #sidebar ul li a[data-icon]:before {
   left: 0;
 }
-html[dir="rtl"] #sidebar > ul li a[data-icon]:before {
+html[dir="rtl"] #sidebar ul li a[data-icon]:before {
   right: 0;
 }
 
-#sidebar > ul li a > em {
+#sidebar ul li a > em {
   position: absolute;
   top: 1.2rem;
   height: 2.4rem;
@@ -524,10 +524,10 @@ html[dir="rtl"] #sidebar > ul li a[data-icon]:before {
   box-sizing: border-box;
   border-radius: 1.2rem;
 }
-html[dir="ltr"] #sidebar > ul li a > em {
+html[dir="ltr"] #sidebar ul li a > em {
   right: 0;
 }
-html[dir="rtl"] #sidebar > ul li a > em {
+html[dir="rtl"] #sidebar ul li a > em {
   left: 0;
 }
 
@@ -592,15 +592,17 @@ html[dir="rtl"] .content {
   align-items: center;
   margin: 0 0 1.5rem;
   box-shadow: var(--neumorphic-button-shadow);
+  transition: transform 0.3s ease;
 }
 
 #upload-button:hover {
-  background: var(--background);
-  box-shadow: var(--neumorphic-shadow);
+  filter: brightness(0.9);
 }
 
 #upload-button:active {
-  box-shadow: var(--neumorphic-shadow-inner);
+  filter: brightness(0.8);
+  transform: scale(0.95);
+  transition: none;
 }
 
 #upload-button[data-icon]:before {

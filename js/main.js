@@ -20,6 +20,11 @@
   if (elasticScrollEnabled) {
     var Scrollbar = window.Scrollbar;
     Scrollbar.use(window.OverscrollPlugin);
+    Scrollbar.init(document.querySelector('#sidebar'), {
+      plugins: {
+        overscroll: {}
+      }
+    });
     Scrollbar.init(document.querySelector('#webapp'), {
       plugins: {
         overscroll: {}
