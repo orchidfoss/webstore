@@ -292,7 +292,7 @@ html[dir="rtl"] .webapp:hover > .context .title.marquee > span {
   background: var(--background-plus);
   border-radius: 1.5rem;
 
-  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.1, 1.2);
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.1, 1);
   transform: translateY(100%);
   visibility: hidden;
 }
