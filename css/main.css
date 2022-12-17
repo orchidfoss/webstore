@@ -425,9 +425,9 @@ html[dir="rtl"] .scrollbar-track-y {
 
 #sidebar > ul {
   margin: 0;
-  padding: 0;
+  padding: 0.5rem;
   background: var(--background-plus);
-  border-radius: 1rem;
+  border-radius: 1.5rem;
   overflow: hidden;
   box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
 }
@@ -450,6 +450,7 @@ html[dir="rtl"] .scrollbar-track-y {
   font-size: 1.6rem;
   font-weight: normal;
   position: relative;
+  border-radius: 1rem;
 }
 
 #sidebar > ul li a:hover {
@@ -468,6 +469,10 @@ html[dir="rtl"] .scrollbar-track-y {
   width: calc(100% - 3rem);
   height: 100%;
   border-bottom: solid 0.1rem rgba(0,0,0,0.125);
+}
+
+#sidebar > ul li:last-child a:after {
+  display: none;
 }
 
 #sidebar > ul li a[aria-selected="true"] {
