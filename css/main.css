@@ -9,6 +9,12 @@
   font-weight: bold;
 }
 
+@font-face {
+  font-family: 'Jali Arabic';
+  src: url(../fonts/Jali_Arabic_Black.ttf);
+  font-weight: 1000;
+}
+
 :root {
 
   /** Accent Color

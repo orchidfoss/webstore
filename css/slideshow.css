@@ -196,7 +196,7 @@ html[dir="rtl"] .slideshow > div {
 
 .slideshow > div h1 {
   font-size: 3rem;
-  font-weight: normal;
+  font-weight: 1000;
   margin: 0;
   max-width: 400px;
 }
@@ -328,6 +328,5 @@ html[dir="rtl"] .slideshow > div a:hover:after {
 
   .slideshow > div h1 {
     font-size: 5rem;
-    font-weight: normal;
   }
 }

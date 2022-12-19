@@ -242,11 +242,12 @@
 #webapp .section ul {
   width: calc(100% - 3rem);
   margin: 1rem auto;
-  border-radius: 0.8rem;
+  border-radius: 1.5rem;
   overflow: hidden;
   max-width: 1024px;
   background: var(--background-plus);
-  padding: 0;
+  padding: 0.5rem;
+  box-sizing: border-box;
   box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
 }
 
@@ -353,7 +354,7 @@ html[dir="rtl"] #webapp-screenshots.start {
 #webapp-screenshots img {
   -moz-margin-end: 1rem;
   margin-inline-end: 1rem;
-  border-radius: 0.8rem;
+  border-radius: 1.5rem;
   height: 20rem;
   box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
   background: #fff;
