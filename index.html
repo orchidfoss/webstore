@@ -47,6 +47,7 @@
   <link rel="stylesheet" href="css/rating_graphs.css">
   <link rel="stylesheet" href="css/input_areas.css">
   <link rel="stylesheet" href="css/submit_tags.css">
+  <link rel="stylesheet" href="css/dropdown.css">
 
   <!-- View Styles -->
   <link rel="stylesheet" href="css/submit.css">
@@ -58,6 +59,7 @@
   <script defer src="services/script.js" type="module"></script>
   <script src="lib/smooth-scrollbar.js"></script>
   <script src="lib/plugins/overscroll.js"></script>
+  <script defer src="js/dropdown.js"></script>
   <script defer src="js/main.js"></script>
   <script defer src="js/languages.js"></script>
   <script defer src="js/dark_mode.js"></script>
@@ -78,6 +80,10 @@
   <script defer src="js/views/history.js"></script>
   <script defer src="js/views/installed.js"></script>
   <script defer src="js/views/settings.js"></script>
+
+  <!-- Dropdown Scripts -->
+  <script defer src="js/dropdowns/main.js"></script>
+  <script defer src="js/dropdowns/help.js"></script>
 
   <!-- Localization -->
   <script src="js/l10n.js"></script>
@@ -113,14 +119,52 @@
       <ul class="results" id="search-results"></ul>
     </form>
     <h1></h1>
-    <a href="#" data-icon="help"></a>
+    <a href="#" id="help-button" data-icon="help"></a>
     <a href="#" id="profile-button">
       <img src="" alt="" id="profile-avatar">
     </a>
     <a href="#" id="options-button" data-icon="options"></a>
   </header>
 
-  <div class="dropdown"></div>
+  <div id="options-dropdown" class="dropdown">
+    <div class="dropdown-view" id="options-dropdown-main">
+      <figure id="options-dropdown-profile">
+        <img src="" alt="" id="options-dropdown-profile-avatar">
+        <figcaption id="options-dropdown-profile-username"></figcaption>
+      </figure>
+      <ul>
+        <!-- No Account Buttons -->
+        <li id="options-dropdown-login" data-icon="user" data-l10n-id="dropdown-login"></li>
+        <li id="options-dropdown-signup" data-icon="email-move" data-l10n-id="dropdown-signup"></li>
+        <!-- Account Buttons -->
+        <li id="options-dropdown-switch-user" data-icon="sync" data-l10n-id="dropdown-switchUser"></li>
+        <li id="options-dropdown-logout" data-icon="email-forward" data-l10n-id="dropdown-logout"></li>
+        <!-- Other Buttons -->
+        <li class="separator"></li>
+        <li id="options-dropdown-settings" data-icon="settings" data-l10n-id="dropdown-settings"></li>
+        <li id="options-dropdown-terms" data-icon="file" data-l10n-id="dropdown-terms"></li>
+        <li id="options-dropdown-privacy" data-icon="accessibility" data-l10n-id="dropdown-privacy"></li>
+        <li id="options-dropdown-guidelines" data-icon="flag" data-l10n-id="dropdown-guidelines"></li>
+        <li class="separator"></li>
+        <li id="options-dropdown-help" data-icon="help" data-l10n-id="dropdown-help"></li>
+        <li id="options-dropdown-feedback" data-icon="sms" data-l10n-id="dropdown-feedback"></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="help-dropdown" class="dropdown">
+    <div class="dropdown-view" id="help-dropdown-main">
+      <header>
+        <h1 data-l10n-id="dropdown-help"></h1>
+      </header>
+      <ul>
+        <li id="help-dropdown-buy" data-icon="help" data-l10n-id="dropdown-help-buy"></li>
+        <li id="help-dropdown-refund" data-icon="help" data-l10n-id="dropdown-help-refund"></li>
+        <li id="help-dropdown-sync" data-icon="help" data-l10n-id="dropdown-help-sync"></li>
+        <li id="help-dropdown-more" data-icon="help" data-l10n-id="dropdown-help-more"></li>
+      </ul>
+    </div>
+  </div>
 
   <nav id="sidebar">
     <a href="#" id="upload-button" data-icon="add" data-l10n-id="nav-upload"></a>

@@ -132,7 +132,7 @@
     setWebappCategory(data.categories[0], element);
 
     OrchidServices.get("profile/" + OrchidServices.userId()).then((data) => {
-      if (data.metadata.is_moderator) {
+      if (data.is_moderator) {
         var modRemove = document.createElement("button");
         modRemove.classList.add("mod-remove");
         modRemove.dataset.icon = "closecancel";
